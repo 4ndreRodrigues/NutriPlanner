@@ -5,7 +5,7 @@ using NutriPlanner.Dtos;
 
 namespace NutriPlanner.Services
 {
-    public class DietService(ApplicationDbContext context) : IDietService
+    public class DietService(ApplicationDbContext _context) : IDietService
     {
         public async Task<DietDto> CreateDietAsync(CreateDietDto dto)
         {
@@ -15,8 +15,8 @@ namespace NutriPlanner.Services
                 Description = dto.Description
             };
 
-            context.Diets.Add(diet);
-            await context.SaveChangesAsync();
+            _context.Diets.Add(diet);
+            await _context.SaveChangesAsync();
 
             return new DietDto
             {
@@ -28,19 +28,19 @@ namespace NutriPlanner.Services
 
         public async Task<bool> DeleteDietAsync(int id)
         {
-            var dietToDelete = await context.Diets.FindAsync(id);
+            var dietToDelete = await _context.Diets.FindAsync(id);
             if (dietToDelete == null)
             {
                 return false;
             }
-            context.Diets.Remove(dietToDelete);
-            await context.SaveChangesAsync();
+            _context.Diets.Remove(dietToDelete);
+            await _context.SaveChangesAsync();
             return true;
         }
 
         public async Task<List<DietDto>> GetAllDietsAsync()
         {
-            var diets = await context.Diets.ToListAsync();
+            var diets = await _context.Diets.ToListAsync();
             return diets.Select(d => new DietDto
             {
                 Id = d.Id,
@@ -51,7 +51,7 @@ namespace NutriPlanner.Services
 
         public async Task<DietDto?> GetDietByIdAsync(int id)
         {
-            var diet = await context.Diets.FindAsync(id);
+            var diet = await _context.Diets.FindAsync(id);
             if (diet == null) {
                 return null;
             }
@@ -65,7 +65,7 @@ namespace NutriPlanner.Services
 
         public async Task<DietDto?> UpdateDietAsync(int id, UpdateDietDto dto)
         {
-            var dietToUpdate = await context.Diets.FindAsync(id);
+            var dietToUpdate = await _context.Diets.FindAsync(id);
             if (dietToUpdate == null)
             {
                 return null;
@@ -74,7 +74,7 @@ namespace NutriPlanner.Services
             dietToUpdate.Name = dto.Name;
             dietToUpdate.Description = dto.Description;
 
-            await context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
             return new DietDto
             {
@@ -84,5 +84,17 @@ namespace NutriPlanner.Services
             };
         }
 
+        public async Task<List<FoodDto>> GetFoodsByDietIdAsync(int id)
+        {
+            return await _context.DietFoods
+                .Where(df => df.DietId == id)
+                .Select(df => new FoodDto
+                {
+                    Id = df.Food.Id,
+                    Name = df.Food.Name,
+                    Category = df.Food.Category,
+                })
+                .ToListAsync();
+        }
     }
 }

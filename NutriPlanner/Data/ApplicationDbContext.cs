@@ -4,7 +4,7 @@ using NutriPlanner.Models;
 
 namespace NutriPlanner.Data
 {
-    public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext(options)
+    public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<ApplicationUser>(options)
     {
         public DbSet<Diet> Diets { get; set; }
         public DbSet<Food> Foods { get; set; }

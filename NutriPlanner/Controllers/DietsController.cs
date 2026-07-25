@@ -7,7 +7,7 @@ namespace NutriPlanner.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DietsController(IDietService _dietService) : Controller
+    public class DietsController(IDietService _dietService) : ControllerBase
     {
         [HttpGet]
         public async Task<IActionResult> GetAllDiets()
@@ -58,6 +58,18 @@ namespace NutriPlanner.Controllers
                 return NotFound();
             }
 
+        }
+
+        [HttpGet("{id}/foods")]
+        public async Task<ActionResult<List<FoodDto>>> GetFoodsByDietId(int id)
+        {
+            var diet = await _dietService.GetDietByIdAsync(id);
+            if (diet == null)
+            {
+                return NotFound();
+            }
+            var foods = await _dietService.GetFoodsByDietIdAsync(id);
+            return Ok(foods);
         }
     }
 }

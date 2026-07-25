@@ -1,5 +1,4 @@
 ﻿using NutriPlanner.Dtos;
-using NutriPlanner.Models;
 
 namespace NutriPlanner.Services
 {
@@ -10,5 +9,6 @@ namespace NutriPlanner.Services
         Task<DietDto> CreateDietAsync(CreateDietDto dto);
         Task<bool> DeleteDietAsync(int id);
         Task<DietDto?> UpdateDietAsync(int id, UpdateDietDto dto);
+        Task<List<FoodDto>> GetFoodsByDietIdAsync(int id);
     }
 }
