@@ -22,6 +22,11 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IDietService, DietService>();
 builder.Services.AddScoped<IFoodService, FoodService>();
 
+builder.Services.AddHttpClient<INutritionApiService, NutritionApiService>(client =>
+{
+    client.BaseAddress = new Uri("https://api.nal.usda.gov/fdc/v1/");
+});
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", policy =>

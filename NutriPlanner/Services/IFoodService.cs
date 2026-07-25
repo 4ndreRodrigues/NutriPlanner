@@ -6,5 +6,7 @@ namespace NutriPlanner.Services
     {
         Task<FoodDto?> GetFoodByIdAsync(int id);
         Task<List<FoodDto>> GetAllFoodsAsync();
+        Task<NutritionInfoDto> GetNutritionInfoAsync(int foodId);
+        Task SaveNutritionInfoAsync(NutritionInfoDto dto);
     }
 }

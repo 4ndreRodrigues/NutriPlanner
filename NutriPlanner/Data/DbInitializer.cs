@@ -37,54 +37,54 @@ namespace NutriPlanner.Data
                 lowFat);
 
             // Proteínas
-            var frango = new Food { Name = "Frango", Category = "Proteína" };
-            var peru = new Food { Name = "Peru", Category = "Proteína" };
-            var vaca = new Food { Name = "Vaca", Category = "Proteína" };
-            var porco = new Food { Name = "Porco", Category = "Proteína" };
-            var borrego = new Food { Name = "Borrego", Category = "Proteína" };
-            var salmao = new Food { Name = "Salmão", Category = "Proteína" };
-            var atum = new Food { Name = "Atum", Category = "Proteína" };
-            var bacalhau = new Food { Name = "Bacalhau", Category = "Proteína" };
-            var sardinha = new Food { Name = "Sardinha", Category = "Proteína" };
-            var cavala = new Food { Name = "Cavala", Category = "Proteína" };
-            var pescada = new Food { Name = "Pescada", Category = "Proteína" };
-            var ovos = new Food { Name = "Ovos", Category = "Proteína" };
-            var camarao = new Food { Name = "Camarão", Category = "Proteína" };
-            var mexilhao = new Food { Name = "Mexilhão", Category = "Proteína" };
-            var polvo = new Food { Name = "Polvo", Category = "Proteína" };
-            var tofu = new Food { Name = "Tofu", Category = "Proteína" };
-            var tempeh = new Food { Name = "Tempeh", Category = "Proteína" };
-            var seitan = new Food { Name = "Seitan", Category = "Proteína" };
+            var frango = new Food { Name = "Frango", SearchTerm = "Chicken breast", Category = "Proteína" };
+            var peru = new Food { Name = "Peru", SearchTerm = "Turkey breast", Category = "Proteína" };
+            var vaca = new Food { Name = "Vaca", SearchTerm = "Beef steak", Category = "Proteína" };
+            var porco = new Food { Name = "Porco", SearchTerm = "Pork loin", Category = "Proteína" };
+            var borrego = new Food { Name = "Borrego", SearchTerm = "Lamb", Category = "Proteína" };
+            var salmao = new Food { Name = "Salmão", SearchTerm = "Salmon", Category = "Proteína" };
+            var atum = new Food { Name = "Atum", SearchTerm = "Tuna", Category = "Proteína" };
+            var bacalhau = new Food { Name = "Bacalhau", SearchTerm = "Cod", Category = "Proteína" };
+            var sardinha = new Food { Name = "Sardinha", SearchTerm = "Sardine", Category = "Proteína" };
+            var cavala = new Food { Name = "Cavala", SearchTerm = "Mackerel", Category = "Proteína" };
+            var pescada = new Food { Name = "Pescada", SearchTerm = "Hake", Category = "Proteína" };
+            var ovos = new Food { Name = "Ovos", SearchTerm = "Egg", Category = "Proteína" };
+            var camarao = new Food { Name = "Camarão", SearchTerm = "Shrimp", Category = "Proteína" };
+            var mexilhao = new Food { Name = "Mexilhão", SearchTerm = "Mussel", Category = "Proteína" };
+            var polvo = new Food { Name = "Polvo", SearchTerm = "Octopus", Category = "Proteína" };
+            var tofu = new Food { Name = "Tofu", SearchTerm = "Tofu", Category = "Proteína" };
+            var tempeh = new Food { Name = "Tempeh", SearchTerm = "Tempeh", Category = "Proteína" };
+            var seitan = new Food { Name = "Seitan", SearchTerm = "Seitan", Category = "Proteína" };
 
             // Hidratos
-            var arrozBranco = new Food { Name = "Arroz Branco", Category = "Hidrato" };
-            var arrozIntegral = new Food { Name = "Arroz Integral", Category = "Hidrato" };
-            var batata = new Food { Name = "Batata", Category = "Hidrato" };
-            var batataDoce = new Food { Name = "Batata-doce", Category = "Hidrato" };
-            var massa = new Food { Name = "Massa", Category = "Hidrato" };
-            var aveia = new Food { Name = "Aveia", Category = "Hidrato" };
-            var paoIntegral = new Food { Name = "Pão Integral", Category = "Hidrato" };
-            var quinoa = new Food { Name = "Quinoa", Category = "Hidrato" };
-            var cuscuz = new Food { Name = "Cuscuz", Category = "Hidrato" };
-            var milho = new Food { Name = "Milho", Category = "Hidrato" };
+            var arrozBranco = new Food { Name = "Arroz Branco", SearchTerm = "White rice", Category = "Hidrato" };
+            var arrozIntegral = new Food { Name = "Arroz Integral", SearchTerm = "Brown rice", Category = "Hidrato" };
+            var batata = new Food { Name = "Batata", SearchTerm = "Potato", Category = "Hidrato" };
+            var batataDoce = new Food { Name = "Batata-doce", SearchTerm = "Sweet potato", Category = "Hidrato" };
+            var massa = new Food { Name = "Massa", SearchTerm = "Pasta", Category = "Hidrato" };
+            var aveia = new Food { Name = "Aveia", SearchTerm = "Oats", Category = "Hidrato" };
+            var paoIntegral = new Food { Name = "Pão Integral", SearchTerm = "Whole wheat bread", Category = "Hidrato" };
+            var quinoa = new Food { Name = "Quinoa", SearchTerm = "Quinoa", Category = "Hidrato" };
+            var cuscuz = new Food { Name = "Cuscuz", SearchTerm = "Couscous", Category = "Hidrato" };
+            var milho = new Food { Name = "Milho", SearchTerm = "Corn", Category = "Hidrato" };
 
             // Gorduras
-            var abacate = new Food { Name = "Abacate", Category = "Gordura" };
-            var azeite = new Food { Name = "Azeite", Category = "Gordura" };
-            var azeitonas = new Food { Name = "Azeitonas", Category = "Gordura" };
-            var amendoas = new Food { Name = "Amêndoas", Category = "Gordura" };
-            var nozes = new Food { Name = "Nozes", Category = "Gordura" };
-            var queijoCurado = new Food { Name = "Queijo Curado", Category = "Gordura" };
+            var abacate = new Food { Name = "Abacate", SearchTerm = "Avocado", Category = "Gordura" };
+            var azeite = new Food { Name = "Azeite", SearchTerm = "Olive oil", Category = "Gordura" };
+            var azeitonas = new Food { Name = "Azeitonas", SearchTerm = "Olives", Category = "Gordura" };
+            var amendoas = new Food { Name = "Amêndoas", SearchTerm = "Almonds", Category = "Gordura" };
+            var nozes = new Food { Name = "Nozes", SearchTerm = "Walnuts", Category = "Gordura" };
+            var queijoCurado = new Food { Name = "Queijo Curado", SearchTerm = "Cheddar cheese", Category = "Gordura" };
 
             // Vegetais
-            var brocolos = new Food { Name = "Brócolos", Category = "Vegetal" };
-            var espinafres = new Food { Name = "Espinafres", Category = "Vegetal" };
-            var tomate = new Food { Name = "Tomate", Category = "Vegetal" };
-            var cenoura = new Food { Name = "Cenoura", Category = "Vegetal" };
-            var cebola = new Food { Name = "Cebola", Category = "Vegetal" };
-            var alho = new Food { Name = "Alho", Category = "Vegetal" };
-            var pepino = new Food { Name = "Pepino", Category = "Vegetal" };
-            var couveFlor = new Food { Name = "Couve-flor", Category = "Vegetal" };
+            var brocolos = new Food { Name = "Brócolos", SearchTerm = "Broccoli", Category = "Vegetal" };
+            var espinafres = new Food { Name = "Espinafres", SearchTerm = "Spinach", Category = "Vegetal" };
+            var tomate = new Food { Name = "Tomate", SearchTerm = "Tomato", Category = "Vegetal" };
+            var cenoura = new Food { Name = "Cenoura", SearchTerm = "Carrot", Category = "Vegetal" };
+            var cebola = new Food { Name = "Cebola", SearchTerm = "Onion", Category = "Vegetal" };
+            var alho = new Food { Name = "Alho", SearchTerm = "Garlic", Category = "Vegetal" };
+            var pepino = new Food { Name = "Pepino", SearchTerm = "Cucumber", Category = "Vegetal" };
+            var couveFlor = new Food { Name = "Couve-flor", SearchTerm = "Cauliflower", Category = "Vegetal" };
 
             _context.Foods.AddRange(
                 frango, peru, vaca, porco, borrego,

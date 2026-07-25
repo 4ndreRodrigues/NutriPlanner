@@ -11,6 +11,7 @@ namespace NutriPlanner.Data
         public DbSet<DietFood> DietFoods { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<UserSelection> UserSelections { get; set; }
+        public DbSet<NutritionInfo> NutritionInfos { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -30,6 +31,15 @@ namespace NutriPlanner.Data
                 .HasOne(df => df.Food)
                 .WithMany(f => f.DietFoods)
                 .HasForeignKey(df => df.FoodId);
+
+
+            modelBuilder.Entity<NutritionInfo>()
+                .HasKey(n => n.FoodId);
+
+            modelBuilder.Entity<NutritionInfo>()
+                .HasOne(n => n.Food)
+                .WithOne(f => f.NutritionInfo)
+                .HasForeignKey<NutritionInfo>(n => n.FoodId);
         }
     }
 }
