@@ -1,0 +1,34 @@
+import FoodCard from "./FoodCard";
+
+// agrupa o array plano de alimentos num objeto: { "Proteína": [...], "Hidrato": [...], ... }
+function groupByCategory(foods) {
+    return foods.reduce((groups, food) => {
+        const category = food.category || "Outros";
+        if (!groups[category]) groups[category] = [];
+        groups[category].push(food);
+        return groups;
+    }, {});
+}
+
+function FoodList({ foods }) {
+    if (foods.length === 0) return <p>Sem alimentos para esta dieta.</p>;
+
+    const grouped = groupByCategory(foods);
+
+    return (
+        <div className="food-groups">
+            {Object.entries(grouped).map(([category, categoryFoods]) => (
+                <div key={category} className="food-group">
+                    <h3>{category}</h3>
+                    <ul className="food-list">
+                        {categoryFoods.map((food) => (
+                            <FoodCard key={food.id} food={food} />
+                        ))}
+                    </ul>
+                </div>
+            ))}
+        </div>
+    );
+}
+
+export default FoodList;
