@@ -7,6 +7,7 @@ function FoodCard({ food }) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [showNutrition, setShowNutrition] = useState(false);
+    const [selectFood, setSelectFood] = useState(false);
 
     function handleToggle() {
         // já está aberto -> só fecha
@@ -39,6 +40,16 @@ function FoodCard({ food }) {
                 setLoading(false);
             });
     }
+
+ /*   function handleSelect() {
+        fetch(`${API_URL}/api/UserSelection`)
+            .then((res) => {
+                if (!res.ok) throw new Error("Erro ao selecionar alimento");
+                return res.json();
+            })
+            .then((data) => {*/
+
+
 
     return (
         <li className="food-card">
