@@ -2,6 +2,9 @@
 using NutriPlanner.Data;
 using NutriPlanner.Dtos;
 using NutriPlanner.Models;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace NutriPlanner.Services
 {
@@ -46,6 +49,41 @@ namespace NutriPlanner.Services
                 FoodName = food.Name,
                 AddedAt = selection.AddedAt
             };
+        }
+
+        public async Task<List<UserSelectionDto>> GetSelectionsAsync(string userId)
+        {
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null)
+            {
+                throw new InvalidOperationException("User not found");
+            }
+
+            var selections= await _context.UserSelections
+                .Where(us => us.UserId == userId)
+                .Select(s => new UserSelectionDto
+                {
+                    Id = s.Id,
+                    FoodId = s.FoodId,
+                    FoodName = s.Food.Name,
+                    AddedAt = s.AddedAt
+                })
+                .ToListAsync();
+
+            return selections;
+        }
+
+        public async Task<bool> DeleteSelectionByFoodIdAsync(string userId, int selectionId)
+        {
+            var selection = await _context.UserSelections
+                .FirstOrDefaultAsync(us => us.FoodId == selectionId && us.UserId == userId);
+            if (selection == null)
+            {
+                return false;
+            }
+            _context.UserSelections.Remove(selection);
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }

@@ -2,12 +2,11 @@ import { useState } from "react";
 
 const API_URL = "https://localhost:7250/api";
 
-function FoodCard({ food }) {
+function FoodCard({ food, token, isSelected, onSelectionAdded, onSelectionRemoved }) {
     const [nutrition, setNutrition] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [showNutrition, setShowNutrition] = useState(false);
-    const [selectFood, setSelectFood] = useState(false);
 
     function handleToggle() {
         // já está aberto -> só fecha
@@ -26,30 +25,59 @@ function FoodCard({ food }) {
         setLoading(true);
         setError(null);
         fetch(`${API_URL}/foods/${food.id}/nutrition`)
-            .then((res) => {
-                if (!res.ok) throw new Error("Sem dados nutricionais");
-                return res.json();
-            })
-            .then((data) => {
-                setNutrition(data);
-                setShowNutrition(true);
-                setLoading(false);
-            })
-            .catch((err) => {
-                setError(err.message);
-                setLoading(false);
-            });
+        .then((res) => {
+            if (!res.ok) throw new Error("Sem dados nutricionais");
+            return res.json();
+        })
+        .then((data) => {
+            setNutrition(data);
+            setShowNutrition(true);
+            setLoading(false);
+        })
+        .catch((err) => {
+            setError(err.message);
+            setLoading(false);
+        });
     }
 
- /*   function handleSelect() {
-        fetch(`${API_URL}/api/UserSelection`)
+    function handleSelect() {
+        fetch(`${API_URL}/UserSelections`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({ foodId: food.id })
+        })
             .then((res) => {
                 if (!res.ok) throw new Error("Erro ao selecionar alimento");
                 return res.json();
             })
-            .then((data) => {*/
+            .then(() => {
+                onSelectionAdded(food.id);
+            })
+            .catch((err) => {
+                console.error(err);
+                setError("Erro ao selecionar alimento");
+            });
+    }
 
-
+    function handleDeselect() {
+        fetch(`${API_URL}/UserSelections/${food.id}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+            .then((res) => {
+                if (!res.ok) throw new Error("Erro ao remover seleção");
+                onSelectionRemoved(food.id);
+            })
+            .catch((err) => {
+                console.error(err);
+                setError("Erro ao remover seleção");
+            });
+    }
 
     return (
         <li className="food-card">
@@ -58,6 +86,13 @@ function FoodCard({ food }) {
                 <button onClick={handleToggle}>
                     {showNutrition ? "Ocultar" : "Ver macros"}
                 </button>
+                {!isSelected && (
+                    <button onClick={handleSelect}>Selecionar</button>
+                )}
+                {isSelected && (
+                    <button onClick={handleDeselect}>Remover</button>
+                )}
+
             </div>
 
             {loading && <p className="food-loading">A carregar...</p>}

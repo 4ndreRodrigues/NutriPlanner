@@ -1,28 +1,31 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import LoginForm from "../components/LoginForm";
+import RegisterForm from "../components/RegisterForm";
 import "../App.css";
 
 const API_URL = "https://localhost:7250/api";
 
-function LoginPage({ onLoginSuccess }) {
+function RegisterPage() {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
 
-    function onLogin(email, password) {
-        fetch(`${API_URL}/auth/login`, {
+    function onRegister(email, password) {
+        fetch(`${API_URL}/auth/register`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password }),
         })
         .then(res => res.json())
         .then(data => {
-            onLoginSuccess(data.token);
-            navigate("/diets");
+            if (data.succeeded == false) {
+                setError(data.errors[0].description);
+            } else {
+                navigate("/login");
+            }
         })
         .catch((err) => {
-            console.error("Erro ao fazer login:", err);
+            console.error("Erro ao fazer registro:", err);
         });
      }
 
@@ -30,9 +33,10 @@ function LoginPage({ onLoginSuccess }) {
     return (
         <div className="container">
             <h1>NutriPlanner</h1>
-            <LoginForm onLogin={onLogin} />
+            {error && <p className="food-error">{error}</p>}
+            <RegisterForm onRegister={onRegister} />
         </div>
     );
 }
 
-export default LoginPage;
+export default RegisterPage;

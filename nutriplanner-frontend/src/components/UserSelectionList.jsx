@@ -10,7 +10,7 @@ function groupByCategory(foods) {
     }, {});
 }
 
-function FoodList({ foods, token, userSelectionIds, onSelectionAdded, onSelectionRemoved }) {
+function UserSelectionList({ foods, token, userSelectionIds, onSelectionAdded, onSelectionRemoved }) {
     if (foods.length === 0) return <p>Sem alimentos para esta dieta.</p>;
 
     const grouped = groupByCategory(foods);
@@ -31,6 +31,4 @@ function FoodList({ foods, token, userSelectionIds, onSelectionAdded, onSelectio
     );
 }
 
-export default FoodList;
-
-
+export default UserSelectionList;
