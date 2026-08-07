@@ -11,10 +11,15 @@ function Layout({ token, onLogout }) {
     return (
         <div className="app-shell">
             <nav className="navbar">
-                <span className="navbar-brand">NutriPlanner</span>
+                <Link className="navbar-brand" to="/">
+                    NutriPlanner
+                </Link>
                 <div className="navbar-links">
                     {token ? (
-                        <button onClick={handleLogout}>Sair</button>
+                        <>
+                            <Link to="/profile">Perfil</Link>
+                            <button onClick={handleLogout}>Sair</button>
+                        </>
                     ) : (
                         <>
                             <Link to="/login">Entrar</Link>
@@ -29,6 +34,7 @@ function Layout({ token, onLogout }) {
                     <aside className="sidebar">
                         <Link to="/diets">Dietas</Link>
                         <Link to="/selections">A minha seleção</Link>
+                        <Link to="/foods">Alimentos</Link>
                     </aside>
                 )}
 

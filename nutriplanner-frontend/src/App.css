@@ -1,36 +1,42 @@
+:root {
+    /* paleta principal */
+    --color-primary: #16a34a;
+    --color-primary-dark: #15803d;
+    --color-primary-light: #dcfce7;
+
+    --color-accent: #f97316;
+
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --text-on-dark: #f9fafb;
+
+    --bg-base: #f9fafb;
+    --bg-surface: #ffffff;
+    --bg-dark: #111827;
+
+
+    --border-color: #e5e7eb;
+
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 12px 32px rgba(0,0,0,0.12);
+
+    --radius-md: 10px;
+    --radius-lg: 16px;
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 16px;
+    --space-4: 24px;
+    --space-5: 40px;
+}
+
+/* ---------- LAYOUT GERAL ---------- */
+
 .app-shell {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 24px;
-    background-color: #2c3e50;
-    color: white;
-}
-
-.navbar-brand {
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
-.navbar-links {
-    display: flex;
-    gap: 16px;
-}
-
-.navbar-links a,
-.navbar-links button {
-    color: white;
-    text-decoration: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1em;
 }
 
 .app-body {
@@ -38,121 +44,336 @@
     flex: 1;
 }
 
-.sidebar {
-    width: 200px;
-    background-color: #f4f4f4;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.sidebar a {
-    text-decoration: none;
-    color: #2c3e50;
-}
-
 .main-content {
     flex: 1;
-    padding: 24px;
+    padding: var(--space-5);
+    margin: 0 auto;
+    width: 100%;
 }
+
+/* ---------- NAVBAR ---------- */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-3) var(--space-5);
+    background-color: var(--bg-dark);
+    color: var(--text-on-dark);
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: -0.02em;
+}
+
+.navbar-logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+    .navbar-links a,
+    .navbar-links button {
+        color: var(--text-on-dark);
+        text-decoration: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 0.95rem;
+        font-weight: 500;
+        opacity: 0.85;
+        transition: opacity 0.15s ease;
+    }
+
+        .navbar-links a:hover,
+        .navbar-links button:hover {
+            opacity: 1;
+        }
+
+    .navbar-links .btn-cta {
+        background-color: var(--color-primary);
+        padding: 8px 18px;
+        border-radius: var(--radius-md);
+        opacity: 1;
+    }
+
+        .navbar-links .btn-cta:hover {
+            background-color: var(--color-primary-dark);
+        }
+
+/* ---------- SIDEBAR ---------- */
+
+.sidebar {
+    width: 220px;
+    background-color: var(--bg-surface);
+    border-right: 1px solid var(--border-color);
+    padding: var(--space-4) var(--space-3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+    .sidebar a {
+        text-decoration: none;
+        color: var(--text-secondary);
+        padding: 10px 14px;
+        border-radius: var(--radius-md);
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: all 0.15s ease;
+    }
+
+        .sidebar a:hover {
+            background-color: var(--color-primary-light);
+            color: var(--color-primary-dark);
+        }
+
+/* ---------- HERO / HOME ---------- */
 
 .home-hero {
     text-align: center;
-    padding: 80px 20px;
+    padding: 100px 20px;
+    background: radial-gradient(circle at 50% 0%, var(--color-primary-light), var(--bg-base) 60%);
 }
 
+    .home-hero h1 {
+        font-size: 2.75rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        margin-bottom: var(--space-3);
+        color: var(--text-primary);
+    }
+
+    .home-hero p {
+        font-size: 1.15rem;
+        color: var(--text-secondary);
+        max-width: 480px;
+        margin: 0 auto;
+    }
+
 .home-actions {
-    margin-top: 24px;
+    margin-top: var(--space-5);
     display: flex;
-    gap: 16px;
+    gap: var(--space-3);
     justify-content: center;
 }
 
 .btn-primary, .btn-secondary {
-    padding: 10px 24px;
-    border-radius: 6px;
+    padding: 12px 28px;
+    border-radius: var(--radius-md);
     text-decoration: none;
     font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .btn-primary {
-    background-color: #2c3e50;
+    background-color: var(--color-primary);
     color: white;
+    box-shadow: var(--shadow-md);
 }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+    }
 
 .btn-secondary {
-    background-color: #ecf0f1;
-    color: #2c3e50;
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
 }
 
+    .btn-secondary:hover {
+        border-color: var(--color-primary);
+        color: var(--color-primary-dark);
+    }
 
-.container {
-    padding: 20px;
-    font-family: sans-serif;
-}
+/* ---------- CARDS (dietas, alimentos) ---------- */
 
 .diet-list {
     list-style: none;
-    padding: 0;
     display: flex;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+    box-sizing: border-box;
 }
 
 .diet-card {
-    cursor: pointer;
-    padding: 10px 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-}
-
-.diet-card:hover {
-    background-color: #f0f0f0;
-}
-
-.food-list {
     list-style: none;
-    padding: 0;
-    margin: 0;
+    cursor: pointer;
+    padding: 14px 22px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.15s ease;
+    box-sizing: border-box;
 }
 
-.food-card {
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
-}
+    .diet-card:hover {
+        border-color: var(--color-primary);
+        box-shadow: var(--shadow-md);
+        transform: translateY(-2px);
+    }
 
 .food-groups {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--space-4);
 }
 
 .food-group h3 {
-    margin-bottom: 6px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    margin-bottom: var(--space-2);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
+
+.food-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.food-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--space-3);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.15s ease;
+}
+
+    .food-card:hover {
+        box-shadow: var(--shadow-md);
+    }
 
 .food-card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: var(--space-2);
 }
 
-.food-card-header button {
-    font-size: 0.85em;
-    padding: 4px 10px;
-    cursor: pointer;
-}
+    .food-card-header span {
+        font-weight: 600;
+    }
 
+    .food-card-header button {
+        font-size: 0.82rem;
+        padding: 6px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--border-color);
+        background-color: var(--bg-base);
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.15s ease;
+    }
 
-.food-error {
-    color: #c0392b;
-    font-size: 0.85em;
-}
+        .food-card-header button:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary-dark);
+        }
 
 .nutrition-details {
     list-style: none;
-    padding: 8px 0 0 16px;
-    margin: 0;
-    font-size: 0.9em;
-    color: #555;
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px dashed var(--border-color);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    font-size: 0.88rem;
+    color: var(--text-secondary);
 }
+
+.food-error {
+    color: #dc2626;
+    font-size: 0.85rem;
+    margin-top: var(--space-1);
+}
+
+.food-loading {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+/* ---------- FORMS (login/register) ---------- */
+
+.container {
+    max-width: 400px;
+    margin: 60px auto;
+    background-color: var(--bg-surface);
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+    .container h1 {
+        font-size: 1.5rem;
+        margin-bottom: var(--space-4);
+        text-align: center;
+    }
+
+    .container input {
+        width: 100%;
+        padding: 12px 14px;
+        margin-bottom: var(--space-3);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        font-size: 0.95rem;
+        transition: border-color 0.15s ease;
+    }
+
+        .container input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+    .container button {
+        width: 100%;
+        padding: 12px;
+        background-color: var(--color-primary);
+        color: white;
+        border: none;
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.15s ease;
+    }
+
+        .container button:hover:not(:disabled) {
+            background-color: var(--color-primary-dark);
+        }
+
+        .container button:disabled {
+            background-color: var(--border-color);
+            cursor: not-allowed;
+        }

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import FoodList from "../components/FoodList";
 import UserSelectionList from "../components/UserSelectionList";
 import "../App.css";
 
@@ -8,10 +7,6 @@ const API_URL = "https://localhost:7250/api";
 function UserSelectionPage({ token }) {
     const [userSelections, setUserSelections] = useState([]);
     const [loadingFoods, setLoadingFoods] = useState(false);
-
-    function handleSelectionAdded(foodId) {
-        setUserSelectionIds((prev) => new Set(prev).add(foodId));
-    }
 
     function handleSelectionRemoved(foodId) {
         setUserSelections((prev) => prev.filter((s) => s.foodId !== foodId));
@@ -38,15 +33,13 @@ function UserSelectionPage({ token }) {
 
     return (
         <div className="container">
-            <h1>NutriPlanner</h1>
             <h2>My Selections</h2>
             {loadingFoods ? (
                 <p>Carregando seleções...</p>
             ) : (
-                <FoodList
-                    foods={userSelections}
+                <UserSelectionList
+                    userSelections={userSelections}
                     token={token}
-                    userSelectionIds={new Set(userSelections.map((s) => s.foodId))}
                     onSelectionRemoved={handleSelectionRemoved}
                 />
             )}

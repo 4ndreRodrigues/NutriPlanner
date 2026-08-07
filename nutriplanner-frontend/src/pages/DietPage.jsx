@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DietList from "../components/DietList";
-import FoodList from "../components/FoodList";
+import FoodListByDiet from "../components/FoodListByDiet";
 import "../App.css";
 
 const API_URL = "https://localhost:7250/api";
@@ -79,9 +79,6 @@ function DietPage({ token }) {
 
     return (
         <div className="container">
-            <h1>NutriPlanner</h1>
-            <button onClick={() => navigate("/selections")}>My selections</button>
-
             <h2>Escolhe a tua dieta</h2>
             {loadingDiets ? (
                 <p>A carregar...</p>
@@ -95,7 +92,7 @@ function DietPage({ token }) {
                     {loadingFoods ? (
                         <p>A carregar alimentos...</p>
                     ) : (
-                        <FoodList
+                        <FoodListByDiet
                             foods={foods}
                             token={token}
                             userSelectionIds={userSelectionIds}
