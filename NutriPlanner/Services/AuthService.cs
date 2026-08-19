@@ -22,7 +22,7 @@ namespace NutriPlanner.Services
             return result;
         }
 
-        public async Task<string?> LoginAsync(LoginDto dto)
+        public async Task<LoginResponseDto?> LoginAsync(LoginDto dto)
         {
             var user = await _userManager.FindByEmailAsync(dto.Email);
             if (user == null)
@@ -34,7 +34,13 @@ namespace NutriPlanner.Services
             {
                 return null;
             }
-            return GenerateJwtToken(user);
+
+            return new LoginResponseDto
+            {
+                Email = dto.Email,
+                Token = GenerateJwtToken(user),
+                DietId = user.DietId
+            };
         }
 
         private string GenerateJwtToken(ApplicationUser user)

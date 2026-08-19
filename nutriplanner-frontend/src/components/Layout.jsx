@@ -1,4 +1,4 @@
-import { Outlet, Link, useNavigate } from "react-router-dom";
+import { Outlet, Link, NavLink, useNavigate } from "react-router-dom";
 
 function Layout({ token, onLogout }) {
     const navigate = useNavigate();
@@ -32,9 +32,9 @@ function Layout({ token, onLogout }) {
             <div className="app-body">
                 {token && (
                     <aside className="sidebar">
-                        <Link to="/diets">Dietas</Link>
-                        <Link to="/selections">A minha seleção</Link>
-                        <Link to="/foods">Alimentos</Link>
+                        <NavLink to="/diets">Dietas</NavLink>
+                        <NavLink to="/selections">A minha seleção</NavLink>
+                        <NavLink to="/foods">Alimentos</NavLink>
                     </aside>
                 )}
 

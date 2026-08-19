@@ -83,16 +83,21 @@ function FoodCard({ food, token, isSelected, onSelectionAdded, onSelectionRemove
         <li className="food-card">
             <div className="food-card-header">
                 <span>{food.name}</span>
-                <button onClick={handleToggle}>
-                    {showNutrition ? "Ocultar" : "Ver macros"}
-                </button>
-                {!isSelected && (
-                    <button onClick={handleSelect}>Selecionar</button>
+                <div className="food-card-actions">
+                    <button className="btn-outline" onClick={handleToggle}>
+                        {showNutrition ? "Ocultar" : "Ver macros"}
+                    </button>
+                    {!isSelected && (
+                        <button className="btn-solid" onClick={handleSelect}>
+                            Adicionar
+                        </button>
+                    )}
+                    {isSelected && (
+                        <button className="btn-danger" onClick={handleDeselect}>
+                            Remover
+                        </button>
                 )}
-                {isSelected && (
-                    <button onClick={handleDeselect}>Remover</button>
-                )}
-
+                </div>
             </div>
 
             {loading && <p className="food-loading">A carregar...</p>}

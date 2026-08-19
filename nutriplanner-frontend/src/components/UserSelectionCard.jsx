@@ -61,10 +61,12 @@ function UserSelectionCard({ userSelection, token, onSelectionRemoved }) {
         <li className="food-card">
             <div className="food-card-header">
                 <span>{userSelection.foodName}</span>
-                <button onClick={handleToggle}>
+                <button className="btn-outline" onClick={handleToggle}>
                     {showNutrition ? "Ocultar" : "Ver macros"}
                 </button>
-                <button onClick={handleDeselect}>Remover</button>
+                <button className="btn-danger" onClick={handleDeselect}>
+                    Remover
+                </button>
             </div>
 
             {loading && <p className="food-loading">A carregar...</p>}

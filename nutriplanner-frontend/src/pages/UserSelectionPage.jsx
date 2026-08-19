@@ -32,7 +32,7 @@ function UserSelectionPage({ token }) {
     }, [token]);
 
     return (
-        <div className="container">
+        <div className="page-content">
             <h2>My Selections</h2>
             {loadingFoods ? (
                 <p>Carregando seleções...</p>

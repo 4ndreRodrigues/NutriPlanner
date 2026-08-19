@@ -6,6 +6,6 @@ namespace NutriPlanner.Services
     public interface IAuthService
     {
         Task<IdentityResult> RegisterAsync(RegisterDto dto);
-        Task<string?> LoginAsync(LoginDto dto);
+        Task<LoginResponseDto?> LoginAsync(LoginDto dto);
     }
 }

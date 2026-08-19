@@ -29,7 +29,6 @@ function LoginPage({ onLoginSuccess }) {
 
     return (
         <div className="container">
-            <h1>NutriPlanner</h1>
             <LoginForm onLogin={onLogin} />
         </div>
     );

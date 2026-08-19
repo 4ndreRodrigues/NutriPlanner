@@ -56,7 +56,7 @@ function FoodPage({ token }) {
     }, []);
 
     return (
-        <div className="container">
+        <div className="page-content">
             <h2>Alimentos</h2>
             {loadingFoods ? (
                 <p>A carregar alimentos...</p>

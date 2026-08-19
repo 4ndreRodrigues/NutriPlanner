@@ -32,7 +32,6 @@ function RegisterPage() {
 
     return (
         <div className="container">
-            <h1>NutriPlanner</h1>
             {error && <p className="food-error">{error}</p>}
             <RegisterForm onRegister={onRegister} />
         </div>

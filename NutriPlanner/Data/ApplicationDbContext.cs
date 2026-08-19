@@ -43,6 +43,11 @@ namespace NutriPlanner.Data
             modelBuilder.Entity<UserSelection>()
                 .HasIndex(us => new { us.UserId, us.FoodId })
                 .IsUnique();
+
+            modelBuilder.Entity<ApplicationUser>()
+                .HasOne<Diet>()
+                .WithMany()
+                .HasForeignKey(u => u.DietId);
         }
     }
 }

@@ -14,7 +14,6 @@
     --bg-surface: #ffffff;
     --bg-dark: #111827;
 
-
     --border-color: #e5e7eb;
 
     --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
@@ -29,6 +28,9 @@
     --space-3: 16px;
     --space-4: 24px;
     --space-5: 40px;
+
+    --color-danger: #dc2626;
+    --color-danger-light: #fee2e2;
 }
 
 /* ---------- LAYOUT GERAL ---------- */
@@ -143,10 +145,16 @@
         transition: all 0.15s ease;
     }
 
-        .sidebar a:hover {
-            background-color: var(--color-primary-light);
-            color: var(--color-primary-dark);
-        }
+    .sidebar a:hover {
+        background-color: var(--color-primary-light);
+        color: var(--color-primary-dark);
+    }
+
+    .sidebar a.active {
+        background-color: var(--color-primary-light);
+        color: var(--color-primary-dark);
+        font-weight: 700;
+    }
 
 /* ---------- HERO / HOME ---------- */
 
@@ -232,13 +240,37 @@
     box-shadow: var(--shadow-sm);
     transition: all 0.15s ease;
     box-sizing: border-box;
+    position: relative;
 }
+    .diet-card .diet-tooltip {
+        display: none;
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        transform: translateX(-50%);
+        color: var(--bg-base);
+        background-color: var(--text-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        padding: 6px 10px;
+        font-size: 0.78rem;
+        font-weight: 400;
+        max-width: 500px;
+        text-align: center;
+        box-shadow: var(--shadow-md);
+        z-index: 1000;
+    }
 
     .diet-card:hover {
         border-color: var(--color-primary);
         box-shadow: var(--shadow-md);
         transform: translateY(-2px);
+        z-index: 10;
     }
+
+        .diet-card:hover .diet-tooltip {
+            display: block;
+        }
 
 .food-groups {
     display: flex;
@@ -286,21 +318,11 @@
         font-weight: 600;
     }
 
-    .food-card-header button {
-        font-size: 0.82rem;
-        padding: 6px 14px;
-        border-radius: 999px;
-        border: 1px solid var(--border-color);
-        background-color: var(--bg-base);
-        cursor: pointer;
-        font-weight: 500;
-        transition: all 0.15s ease;
-    }
+.food-card-actions {
+    display: flex;
+    gap: var(--space-2);
+}
 
-        .food-card-header button:hover {
-            border-color: var(--color-primary);
-            color: var(--color-primary-dark);
-        }
 
 .nutrition-details {
     list-style: none;
@@ -308,6 +330,7 @@
     padding-top: var(--space-3);
     border-top: 1px dashed var(--border-color);
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     gap: var(--space-3);
     font-size: 0.88rem;
@@ -377,3 +400,67 @@
             background-color: var(--border-color);
             cursor: not-allowed;
         }
+
+.page-content {
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: var(--bg-surface);
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-outline {
+    min-width: 110px;
+    text-align: center;
+    font-size: 0.82rem;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.15s ease;
+}
+
+    .btn-outline:hover {
+        border-color: var(--color-primary);
+        color: var(--color-primary-dark);
+    }
+
+.btn-danger {
+    min-width: 110px;
+    text-align: center;
+    font-size: 0.82rem;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--color-danger);
+    background-color: var(--bg-surface);
+    color: var(--color-danger);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.15s ease;
+}
+
+    .btn-danger:hover {
+        background-color: var(--color-danger-light);
+    }
+
+.btn-solid {
+    min-width: 110px;
+    text-align: center;
+    font-size: 0.82rem;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border-color);
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.15s ease;
+}
+    .btn-solid:hover {
+        background-color: var(--color-primary);
+        color: white;
+    }

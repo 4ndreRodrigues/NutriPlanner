@@ -16,14 +16,15 @@ namespace NutriPlanner.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginDto loginDto)
+        public async Task<ActionResult<LoginResponseDto>> Login(LoginDto loginDto)
         {
-            var token = await _authService.LoginAsync(loginDto);
-            if (token == null)
+            var loginResponse = await _authService.LoginAsync(loginDto);
+            if (loginResponse == null)
             {
                 return Unauthorized();
             }
-            return Ok(new { Token = token });
+
+            return Ok(loginResponse);
         }
     }
 }
