@@ -1,6 +1,6 @@
 import { Outlet, Link, NavLink, useNavigate } from "react-router-dom";
 
-function Layout({ token, onLogout }) {
+function Layout({ token, lastDietId, onLogout }) {
     const navigate = useNavigate();
 
     function handleLogout() {
@@ -32,7 +32,7 @@ function Layout({ token, onLogout }) {
             <div className="app-body">
                 {token && (
                     <aside className="sidebar">
-                        <NavLink to="/diets">Dietas</NavLink>
+                        <NavLink to={lastDietId ? `/diets/${lastDietId}` : "/diets"}>Dietas</NavLink>
                         <NavLink to="/selections">A minha seleção</NavLink>
                         <NavLink to="/foods">Alimentos</NavLink>
                     </aside>

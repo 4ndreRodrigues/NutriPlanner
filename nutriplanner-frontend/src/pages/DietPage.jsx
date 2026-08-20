@@ -5,7 +5,7 @@ import "../App.css";
 
 const API_URL = "https://localhost:7250/api";
 
-function DietPage({ token }) {
+function DietPage({ token, handleDietSelection}) {
     const [diets, setDiets] = useState([]);
     const [selectedDietId, setSelectedDietId] = useState(null);
     const [foods, setFoods] = useState([]);
@@ -14,21 +14,20 @@ function DietPage({ token }) {
     const [userSelectionIds, setUserSelectionIds] = useState(new Set());
     const navigate = useNavigate();
 
-
     useEffect(() => {
         fetch(`${API_URL}/diets`)
-        .then(response => {
-            if (!response.ok) throw new Error("Error fetching diets");
-            return response.json();
-        })
-        .then(data => {
-            setDiets(data);
-            setLoadingDiets(false);
-        })
-        .catch ((err) => {
-            console.error("Erro ao ir buscar dietas:", err);
-            setLoadingDiets(false);
-        });
+            .then(response => {
+                if (!response.ok) throw new Error("Error fetching diets");
+                return response.json();
+            })
+            .then(data => {
+                setDiets(data);
+                setLoadingDiets(false);
+            })
+            .catch ((err) => {
+                console.error("Erro ao ir buscar dietas:", err);
+                setLoadingDiets(false);
+            });
     }, []);
 
 
@@ -38,7 +37,11 @@ function DietPage({ token }) {
             {loadingDiets ? (
                 <p>A carregar...</p>
             ) : (
-                <DietList diets={diets} onSelectDiet={(id) => navigate(`/diets/${id}`)} />
+                    <DietList
+                        diets={diets}
+                        token={token}
+                        onSelectDiet={handleDietSelection}
+                    />
             )}
 
         </div>

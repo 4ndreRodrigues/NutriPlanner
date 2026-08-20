@@ -5,7 +5,7 @@ import "../App.css";
 
 const API_URL = "https://localhost:7250/api";
 
-function LoginPage({ onLoginSuccess }) {
+function LoginPage({ onLoginSuccess, onDietIdSuccess }) {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
@@ -19,6 +19,7 @@ function LoginPage({ onLoginSuccess }) {
         .then(res => res.json())
         .then(data => {
             onLoginSuccess(data.token);
+            onDietIdSuccess(data.dietId);
             navigate("/diets");
         })
         .catch((err) => {

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NutriPlanner.Dtos;
 using NutriPlanner.Services;
 using System.Threading.Tasks;
@@ -7,11 +8,12 @@ using System.Security.Claims;
 
 namespace NutriPlanner.Controllers
 {
+    [Authorize]
     [Route("api/users")]
     [ApiController]
     public class UsersController(IUserService _userService) : ControllerBase
     {
-        [HttpPut("me/diet/{dietId}")]
+        [HttpPut("me/diet/{dietId:int}")]
         public async Task<IActionResult> setDiet(int dietId)
         {
             var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
@@ -20,7 +22,7 @@ namespace NutriPlanner.Controllers
             var success = await _userService.SetDietAsync(userId, dietId);
             if (!success) return NotFound();
 
-            return Ok();
+            return NoContent();
         }
     }
 }

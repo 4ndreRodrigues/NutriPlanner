@@ -12,6 +12,7 @@ import "./App.css";
 
 function App() {
     const [token, setToken] = useState(() => localStorage.getItem("token"));
+    const [lastDietId, setLastDietId] = useState(() => localStorage.getItem("dietId"));
 
     function handleSetToken(newToken) {
         if (newToken) {
@@ -22,13 +23,22 @@ function App() {
         setToken(newToken);
     }
 
+    function handleSetDietId(newDietId) {
+        if (newDietId) {
+            localStorage.setItem("dietId", newDietId);
+        } else {
+            localStorage.removeItem("dietId");
+        }
+        setLastDietId(newDietId);
+    }
+
     return (
         <Routes>
-            <Route element={<Layout token={token} onLogout={() => handleSetToken(null)} />}>
+            <Route element={<Layout token={token} lastDietId={lastDietId} onLogout={() => handleSetToken(null)} />}>
                 <Route path="/" element={<HomePage token={token} />} />
-                <Route path="/login" element={<LoginPage onLoginSuccess={handleSetToken} />} />
+                <Route path="/login" element={<LoginPage onLoginSuccess={handleSetToken} onDietIdSuccess={handleSetDietId} />} />
                 <Route path="/register" element={<RegisterPage />} />
-                <Route path="/diets" element={token ? <DietPage token={token} /> : <Navigate to="/login" />} />
+                <Route path="/diets" element={token ? <DietPage token={token} handleDietSelection={handleSetDietId} /> : <Navigate to="/login" />} />
                 <Route path="/diets/:dietId" element={token ? <DietFoodsPage token={token} /> : <Navigate to="/login" />} />
                 <Route path="/selections" element={token ? <UserSelectionPage token={token} /> : <Navigate to="/login" />} />
                 <Route path="/foods" element={token ? <FoodPage token={token} /> : <Navigate to="/login" />} />
