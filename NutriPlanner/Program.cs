@@ -58,8 +58,10 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IDietService, DietService>();
 builder.Services.AddScoped<IFoodService, FoodService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IUserSelectionService, UserSelectionService>();
+builder.Services.AddScoped<IUserFoodService, UserFoodService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IHealthConditionService, HealthConditionService>();
+builder.Services.AddScoped<IUserHealthConditionService, UserHealthConditionService>();
 
 builder.Services.AddHttpClient<INutritionApiService, NutritionApiService>(client =>
 {

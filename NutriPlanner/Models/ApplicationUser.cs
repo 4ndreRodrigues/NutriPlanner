@@ -6,6 +6,6 @@ namespace NutriPlanner.Models
     {
         public string? Objetivo { get; set; }
         public int? DietId { get; set; }
-        public ICollection<UserSelection> Selections { get; set; }
+        public ICollection<UserFood> Selections { get; set; }
     }
 }

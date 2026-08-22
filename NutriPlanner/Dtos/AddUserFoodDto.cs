@@ -1,6 +1,6 @@
 ﻿namespace NutriPlanner.Dtos
 {
-    public class AddSelectionDto
+    public class AddUserFoodDto
     {
         public required int FoodId { get; set; }
     }

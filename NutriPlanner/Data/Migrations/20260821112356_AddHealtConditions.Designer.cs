@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NutriPlanner.Data;
 
@@ -11,9 +12,11 @@ using NutriPlanner.Data;
 namespace NutriPlanner.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260821112356_AddHealtConditions")]
+    partial class AddHealtConditions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -356,7 +359,7 @@ namespace NutriPlanner.Data.Migrations
                     b.ToTable("NutritionInfos");
                 });
 
-            modelBuilder.Entity("NutriPlanner.Models.UserFood", b =>
+            modelBuilder.Entity("NutriPlanner.Models.UserSelection", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -381,32 +384,7 @@ namespace NutriPlanner.Data.Migrations
                     b.HasIndex("UserId", "FoodId")
                         .IsUnique();
 
-                    b.ToTable("UserFoods");
-                });
-
-            modelBuilder.Entity("NutriPlanner.Models.UserHealthCondition", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("HealthConditionId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("HealthConditionId");
-
-                    b.HasIndex("UserId", "HealthConditionId")
-                        .IsUnique();
-
-                    b.ToTable("UserHealthConditions");
+                    b.ToTable("UserSelections");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -516,7 +494,7 @@ namespace NutriPlanner.Data.Migrations
                     b.Navigation("Food");
                 });
 
-            modelBuilder.Entity("NutriPlanner.Models.UserFood", b =>
+            modelBuilder.Entity("NutriPlanner.Models.UserSelection", b =>
                 {
                     b.HasOne("NutriPlanner.Models.Food", "Food")
                         .WithMany()
@@ -531,25 +509,6 @@ namespace NutriPlanner.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Food");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("NutriPlanner.Models.UserHealthCondition", b =>
-                {
-                    b.HasOne("NutriPlanner.Models.HealthCondition", "HealthCondition")
-                        .WithMany()
-                        .HasForeignKey("HealthConditionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("NutriPlanner.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("HealthCondition");
 
                     b.Navigation("User");
                 });

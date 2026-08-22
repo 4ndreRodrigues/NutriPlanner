@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace NutriPlanner.Services
 {
-    public class UserSelectionService(ApplicationDbContext _context) : IUserSelectionService
+    public class UserFoodService(ApplicationDbContext _context) : IUserFoodService
     {
-        public async Task<UserSelectionDto> AddSelectionAsync(string userId, AddSelectionDto dto)
+        public async Task<UserFoodDto> AddUserFoodAsync(string userId, AddUserFoodDto dto)
         {
             var user = await _context.Users.FindAsync(userId);
             if (user == null) {
@@ -22,15 +22,15 @@ namespace NutriPlanner.Services
                 throw new InvalidOperationException("Food not found");
             }
 
-            var foodAlreadySelected = await _context.UserSelections
-                .AnyAsync<UserSelection>(us => us.UserId == userId && us.FoodId == dto.FoodId);
+            var foodAlreadySelected = await _context.UserFoods
+                .AnyAsync<UserFood>(uf => uf.UserId == userId && uf.FoodId == dto.FoodId);
 
             if (foodAlreadySelected)
             {
                 throw new InvalidOperationException("Food already selected");
             }
 
-            var selection = new UserSelection
+            var selection = new UserFood
             {
                 UserId = userId,
                 User = user,
@@ -39,10 +39,10 @@ namespace NutriPlanner.Services
                 AddedAt = DateTime.UtcNow
             };
 
-            _context.UserSelections.Add(selection);
+            _context.UserFoods.Add(selection);
             await _context.SaveChangesAsync();
 
-            return new UserSelectionDto
+            return new UserFoodDto
             {
                 Id = selection.Id,
                 FoodId = selection.FoodId,
@@ -51,7 +51,7 @@ namespace NutriPlanner.Services
             };
         }
 
-        public async Task<List<UserSelectionDto>> GetSelectionsAsync(string userId)
+        public async Task<List<UserFoodDto>> GetUserFoodsAsync(string userId)
         {
             var user = await _context.Users.FindAsync(userId);
             if (user == null)
@@ -59,9 +59,9 @@ namespace NutriPlanner.Services
                 throw new InvalidOperationException("User not found");
             }
 
-            var selections= await _context.UserSelections
+            var selections= await _context.UserFoods
                 .Where(us => us.UserId == userId)
-                .Select(s => new UserSelectionDto
+                .Select(s => new UserFoodDto
                 {
                     Id = s.Id,
                     FoodId = s.FoodId,
@@ -73,15 +73,15 @@ namespace NutriPlanner.Services
             return selections;
         }
 
-        public async Task<bool> DeleteSelectionByFoodIdAsync(string userId, int selectionId)
+        public async Task<bool> DeleteUserFoodByFoodIdAsync(string userId, int selectionId)
         {
-            var selection = await _context.UserSelections
+            var selection = await _context.UserFoods
                 .FirstOrDefaultAsync(us => us.FoodId == selectionId && us.UserId == userId);
             if (selection == null)
             {
                 return false;
             }
-            _context.UserSelections.Remove(selection);
+            _context.UserFoods.Remove(selection);
             await _context.SaveChangesAsync();
             return true;
         }

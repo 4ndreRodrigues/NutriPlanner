@@ -15,7 +15,7 @@ function UserSelectionPage({ token }) {
     useEffect(() => {
         if (!token) return;
         setLoadingFoods(true);
-        fetch(`${API_URL}/UserSelections`, {
+        fetch(`${API_URL}/userfoods`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

@@ -12,35 +12,35 @@ namespace NutriPlanner.Controllers
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class UserSelectionsController(IUserSelectionService _userSelectionService) : ControllerBase
+    public class UserHealthConditionController(IUserHealthConditionService _userHealthConditionsService) : ControllerBase
     {
         [HttpPost]
-        public async Task<IActionResult> AddSelection(AddSelectionDto dto)
+        public async Task<IActionResult> AddUserHealthCondition(AddUserHealthConditionDto dto)
         {
             var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
             if (userId == null) return Unauthorized();
 
-            var userSelection = await _userSelectionService.AddSelectionAsync(userId, dto);
-            return Ok(userSelection);
+            var userHealthCondition = await _userHealthConditionsService.AddUserHealthConditionAsync(userId, dto);
+            return Ok(userHealthCondition);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetSelections()
+        public async Task<IActionResult> GetUserHealthConditions()
         {
             var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
             if (userId == null) return Unauthorized();
 
-            var selections = await _userSelectionService.GetSelectionsAsync(userId);
-            return Ok(selections);
+            var userHealthConditions = await _userHealthConditionsService.GetUserHealthConditionsAsync(userId);
+            return Ok(userHealthConditions);
         }
 
-        [HttpDelete("{selectionId}")]
-        public async Task<IActionResult> DeleteSelection(int selectionId)
+        [HttpDelete("{healthConditionId}")]
+        public async Task<IActionResult> DeleteUserHealthCondition(int healthConditionId)
         {
             var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
             if (userId == null) return Unauthorized();
 
-            var result = await _userSelectionService.DeleteSelectionByFoodIdAsync(userId, selectionId);
+            var result = await _userHealthConditionsService.DeleteUserHealthConditionByHealthConditionIdAsync(userId, healthConditionId);
             if (!result) return NotFound();
 
             return NoContent();

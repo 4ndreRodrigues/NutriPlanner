@@ -32,7 +32,8 @@ function Layout({ token, lastDietId, onLogout }) {
             <div className="app-body">
                 {token && (
                     <aside className="sidebar">
-                        <NavLink to={lastDietId ? `/diets/${lastDietId}` : "/diets"}>Dietas</NavLink>
+                        <NavLink to={lastDietId ?`/diets/${lastDietId}` : "/diets"}>Dietas</NavLink>
+                        <NavLink to="/healthconditions">Condições</NavLink>
                         <NavLink to="/selections">A minha seleção</NavLink>
                         <NavLink to="/foods">Alimentos</NavLink>
                     </aside>

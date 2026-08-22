@@ -24,5 +24,6 @@ namespace NutriPlanner.Controllers
 
             return NoContent();
         }
+
     }
 }

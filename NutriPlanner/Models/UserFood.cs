@@ -1,6 +1,6 @@
 ﻿namespace NutriPlanner.Models
 {
-    public class UserSelection
+    public class UserFood
     {
         public int Id { get; set; }
         public string UserId { get; set; }

@@ -9,8 +9,11 @@ namespace NutriPlanner.Data
         public DbSet<Diet> Diets { get; set; }
         public DbSet<Food> Foods { get; set; }
         public DbSet<DietFood> DietFoods { get; set; }
-        public DbSet<UserSelection> UserSelections { get; set; }
+        public DbSet<UserFood> UserFoods { get; set; }
         public DbSet<NutritionInfo> NutritionInfos { get; set; }
+        public DbSet<HealthCondition> HealthConditions { get; set; }
+        public DbSet<HealthConditionFood> HealthConditionFoods { get; set; }
+        public DbSet<UserHealthCondition> UserHealthConditions { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -40,7 +43,8 @@ namespace NutriPlanner.Data
                 .WithOne(f => f.NutritionInfo)
                 .HasForeignKey<NutritionInfo>(n => n.FoodId);
 
-            modelBuilder.Entity<UserSelection>()
+
+            modelBuilder.Entity<UserFood>()
                 .HasIndex(us => new { us.UserId, us.FoodId })
                 .IsUnique();
 
@@ -48,6 +52,26 @@ namespace NutriPlanner.Data
                 .HasOne<Diet>()
                 .WithMany()
                 .HasForeignKey(u => u.DietId);
+
+
+            modelBuilder.Entity<HealthConditionFood>()
+                .HasKey(hcf => new { hcf.HealthConditionId, hcf.FoodId });
+
+            modelBuilder.Entity<HealthConditionFood>()
+                .HasOne(hcf => hcf.HealthCondition)
+                .WithMany(hc => hc.HealthConditionFoods)
+                .HasForeignKey(hcf => hcf.HealthConditionId);
+
+            modelBuilder.Entity<HealthConditionFood>()
+                .HasOne(hcf => hcf.Food)
+                .WithMany(f => f.HealthConditionFoods)
+                .HasForeignKey(hcf => hcf.FoodId);
+
+
+            modelBuilder.Entity<UserHealthCondition>()
+                .HasIndex(uhc => new { uhc.UserId, uhc.HealthConditionId })
+                .IsUnique();
+                
         }
     }
 }

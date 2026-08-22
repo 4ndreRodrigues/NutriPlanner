@@ -41,7 +41,7 @@ function UserSelectionCard({ userSelection, token, onSelectionRemoved }) {
     }
 
     function handleDeselect() {
-        fetch(`${API_URL}/UserSelections/${userSelection.foodId}`, {
+        fetch(`${API_URL}/userfoods/${userSelection.foodId}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`

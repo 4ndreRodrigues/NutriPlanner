@@ -12,5 +12,6 @@ namespace NutriPlanner.Models
         public string? ExternalFoodId { get; set; }
         public ICollection<DietFood> DietFoods { get; set; }
         public NutritionInfo? NutritionInfo { get; set; }
+        public ICollection<HealthConditionFood> HealthConditionFoods { get; set; }
     }
 }
