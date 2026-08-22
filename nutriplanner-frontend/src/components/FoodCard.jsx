@@ -41,7 +41,7 @@ function FoodCard({ food, token, isSelected, onSelectionAdded, onSelectionRemove
     }
 
     function handleSelect() {
-        fetch(`${API_URL}/UserSelections`, {
+        fetch(`${API_URL}/UserFoods`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -63,7 +63,7 @@ function FoodCard({ food, token, isSelected, onSelectionAdded, onSelectionRemove
     }
 
     function handleDeselect() {
-        fetch(`${API_URL}/UserSelections/${food.id}`, {
+        fetch(`${API_URL}/UserFoods/${food.id}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`

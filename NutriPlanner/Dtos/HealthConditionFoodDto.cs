@@ -1,4 +1,6 @@
-﻿namespace NutriPlanner.Dtos
+﻿using NutriPlanner.Models;
+
+namespace NutriPlanner.Dtos
 {
     public class HealthConditionFoodDto
     {
@@ -7,6 +9,6 @@
         public string? SearchTerm { get; set; }
         public string? Category { get; set; }
         public string? ExternalFoodId { get; set; }
-        public string? Severity { get; set; }
+        public FoodSeverity? Severity { get; set; }
     }
 }
