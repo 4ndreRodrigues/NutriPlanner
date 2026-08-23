@@ -36,6 +36,7 @@ namespace NutriPlanner.Data
                 // Proteínas
                 var frango = new Food { Name = "Frango", SearchTerm = "Chicken breast", Category = "Proteínas" };
                 var peru = new Food { Name = "Peru", SearchTerm = "Turkey breast", Category = "Proteínas" };
+                var pato = new Food { Name = "Pato", SearchTerm = "Duck", Category = "Proteínas" };
                 var vaca = new Food { Name = "Vaca", SearchTerm = "Beef steak", Category = "Proteínas" };
                 var porco = new Food { Name = "Porco", SearchTerm = "Pork loin", Category = "Proteínas" };
                 var borrego = new Food { Name = "Borrego", SearchTerm = "Lamb", Category = "Proteínas" };
@@ -45,10 +46,10 @@ namespace NutriPlanner.Data
                 var sardinha = new Food { Name = "Sardinha", SearchTerm = "Sardine", Category = "Proteínas" };
                 var cavala = new Food { Name = "Cavala", SearchTerm = "Mackerel", Category = "Proteínas" };
                 var pescada = new Food { Name = "Pescada", SearchTerm = "Hake", Category = "Proteínas" };
-                var ovos = new Food { Name = "Ovos", SearchTerm = "Egg", Category = "Proteínas" };
+                var polvo = new Food { Name = "Polvo", SearchTerm = "Octopus", Category = "Proteínas" };
                 var camarao = new Food { Name = "Camarão", SearchTerm = "Shrimp", Category = "Proteínas" };
                 var mexilhao = new Food { Name = "Mexilhão", SearchTerm = "Mussel", Category = "Proteínas" };
-                var polvo = new Food { Name = "Polvo", SearchTerm = "Octopus", Category = "Proteínas" };
+                var ovos = new Food { Name = "Ovos", SearchTerm = "Egg", Category = "Proteínas" };
                 var tofu = new Food { Name = "Tofu", SearchTerm = "Tofu", Category = "Proteínas" };
                 var tempeh = new Food { Name = "Tempeh", SearchTerm = "Tempeh", Category = "Proteínas" };
                 var seitan = new Food { Name = "Seitan", SearchTerm = "Seitan", Category = "Proteínas" };
@@ -60,20 +61,26 @@ namespace NutriPlanner.Data
                 var batataDoce = new Food { Name = "Batata-doce", SearchTerm = "Sweet potato", Category = "Hidratos" };
                 var massa = new Food { Name = "Massa", SearchTerm = "Pasta", Category = "Hidratos" };
                 var aveia = new Food { Name = "Aveia", SearchTerm = "Oats", Category = "Hidratos" };
+                var paoBranco = new Food { Name = "Pão Branco", SearchTerm = "White bread", Category = "Hidratos" };
                 var paoIntegral = new Food { Name = "Pão Integral", SearchTerm = "Whole wheat bread", Category = "Hidratos" };
+                var broa = new Food { Name = "Broa de Milho", SearchTerm = "Corn bread", Category = "Hidratos" };
                 var quinoa = new Food { Name = "Quinoa", SearchTerm = "Quinoa", Category = "Hidratos" };
                 var cuscuz = new Food { Name = "Cuscuz", SearchTerm = "Couscous", Category = "Hidratos" };
                 var milho = new Food { Name = "Milho", SearchTerm = "Corn", Category = "Hidratos" };
+                var graoBico = new Food { Name = "Grão-de-bico", SearchTerm = "Chickpeas", Category = "Hidratos" };
+                var feijao = new Food { Name = "Feijão", SearchTerm = "Red beans", Category = "Hidratos" };
 
                 // Gorduras
-                var abacate = new Food { Name = "Abacate", SearchTerm = "Avocado", Category = "Gorduras" };
                 var azeite = new Food { Name = "Azeite", SearchTerm = "Olive oil", Category = "Gorduras" };
+                var manteiga = new Food { Name = "Manteiga", SearchTerm = "Butter", Category = "Gorduras" };
+                var abacate = new Food { Name = "Abacate", SearchTerm = "Avocado", Category = "Gorduras" };
                 var azeitonas = new Food { Name = "Azeitonas", SearchTerm = "Olives", Category = "Gorduras" };
                 var amendoas = new Food { Name = "Amêndoas", SearchTerm = "Almonds", Category = "Gorduras" };
                 var nozes = new Food { Name = "Nozes", SearchTerm = "Walnuts", Category = "Gorduras" };
                 var queijoCurado = new Food { Name = "Queijo Curado", SearchTerm = "Cheddar cheese", Category = "Gorduras" };
 
                 // Vegetais
+                var couveGalega = new Food { Name = "Couve Galega", SearchTerm = "Collard greens", Category = "Vegetais" };
                 var brocolos = new Food { Name = "Brócolos", SearchTerm = "Broccoli", Category = "Vegetais" };
                 var espinafres = new Food { Name = "Espinafres", SearchTerm = "Spinach", Category = "Vegetais" };
                 var tomate = new Food { Name = "Tomate", SearchTerm = "Tomato", Category = "Vegetais" };
@@ -84,6 +91,9 @@ namespace NutriPlanner.Data
                 var couveFlor = new Food { Name = "Couve-flor", SearchTerm = "Cauliflower", Category = "Vegetais" };
 
                 // Frutas
+                var maca = new Food { Name = "Maçã", SearchTerm = "Apple", Category = "Frutas" };
+                var pera = new Food { Name = "Pêra", SearchTerm = "Pear", Category = "Frutas" };
+                var laranja = new Food { Name = "Laranja", SearchTerm = "Orange", Category = "Frutas" };
                 var banana = new Food { Name = "Banana", SearchTerm = "Banana", Category = "Frutas" };
                 var manga = new Food { Name = "Manga", SearchTerm = "Mango", Category = "Frutas" };
                 var uvas = new Food { Name = "Uvas", SearchTerm = "Grapes", Category = "Frutas" };
@@ -91,16 +101,17 @@ namespace NutriPlanner.Data
 
                 // Outros
                 var mel = new Food { Name = "Mel", SearchTerm = "Honey", Category = "Outros" };
+                var cafe = new Food { Name = "Café", SearchTerm = "Coffee", Category = "Outros" };
 
                 _context.Foods.AddRange(
-                    frango, peru, vaca, porco, borrego,
-                    salmao, atum, bacalhau, sardinha, cavala, pescada,
-                    ovos, camarao, mexilhao, polvo, tofu, tempeh, seitan,
-                    arrozBranco, arrozIntegral, batata, batataDoce, massa, aveia, paoIntegral, quinoa, cuscuz, milho,
-                    abacate, azeite, azeitonas, amendoas, nozes, queijoCurado,
-                    brocolos, espinafres, tomate, cenoura, cebola, alho, pepino, couveFlor,
-                    banana, manga, uvas, tamaras,
-                    mel
+                    frango, peru, pato, vaca, porco, borrego,
+                    salmao, atum, bacalhau, sardinha, cavala, pescada, polvo, camarao, mexilhao,
+                    ovos, tofu, tempeh, seitan,
+                    arrozBranco, arrozIntegral, batata, batataDoce, massa, aveia, paoBranco, paoIntegral, broa, quinoa, cuscuz, milho, graoBico, feijao,
+                    azeite, manteiga, abacate, azeitonas, amendoas, nozes, queijoCurado,
+                    couveGalega, brocolos, espinafres, tomate, cenoura, cebola, alho, pepino, couveFlor,
+                    maca, pera, laranja, banana, manga, uvas, tamaras,
+                    mel, cafe
                 );
 
                 await _context.SaveChangesAsync();
@@ -110,6 +121,7 @@ namespace NutriPlanner.Data
                     // Carnívora
                     new DietFood { DietId = carnivora.Id, FoodId = frango.Id },
                     new DietFood { DietId = carnivora.Id, FoodId = peru.Id },
+                    new DietFood { DietId = carnivora.Id, FoodId = pato.Id },
                     new DietFood { DietId = carnivora.Id, FoodId = vaca.Id },
                     new DietFood { DietId = carnivora.Id, FoodId = porco.Id },
                     new DietFood { DietId = carnivora.Id, FoodId = borrego.Id },
@@ -118,28 +130,44 @@ namespace NutriPlanner.Data
                     new DietFood { DietId = carnivora.Id, FoodId = bacalhau.Id },
                     new DietFood { DietId = carnivora.Id, FoodId = sardinha.Id },
                     new DietFood { DietId = carnivora.Id, FoodId = cavala.Id },
-                    new DietFood { DietId = carnivora.Id, FoodId = ovos.Id },
+                    new DietFood { DietId = carnivora.Id, FoodId = pescada.Id },
+                    new DietFood { DietId = carnivora.Id, FoodId = polvo.Id },
                     new DietFood { DietId = carnivora.Id, FoodId = camarao.Id },
+                    new DietFood { DietId = carnivora.Id, FoodId = mexilhao.Id },
+                    new DietFood { DietId = carnivora.Id, FoodId = ovos.Id },
                     new DietFood { DietId = carnivora.Id, FoodId = queijoCurado.Id },
 
                     // Anti-inflamatória
+                    new DietFood { DietId = antiInflamatoria.Id, FoodId = frango.Id },
+                    new DietFood { DietId = antiInflamatoria.Id, FoodId = peru.Id },
                     new DietFood { DietId = antiInflamatoria.Id, FoodId = salmao.Id },
                     new DietFood { DietId = antiInflamatoria.Id, FoodId = sardinha.Id },
                     new DietFood { DietId = antiInflamatoria.Id, FoodId = cavala.Id },
+                    new DietFood { DietId = antiInflamatoria.Id, FoodId = atum.Id },
+                    new DietFood { DietId = antiInflamatoria.Id, FoodId = ovos.Id },
                     new DietFood { DietId = antiInflamatoria.Id, FoodId = azeite.Id },
                     new DietFood { DietId = antiInflamatoria.Id, FoodId = abacate.Id },
-                    new DietFood { DietId = antiInflamatoria.Id, FoodId = brocolos.Id },
-                    new DietFood { DietId = antiInflamatoria.Id, FoodId = espinafres.Id },
-                    new DietFood { DietId = antiInflamatoria.Id, FoodId = tomate.Id },
-                    new DietFood { DietId = antiInflamatoria.Id, FoodId = cenoura.Id },
-                    new DietFood { DietId = antiInflamatoria.Id, FoodId = alho.Id },
-                    new DietFood { DietId = antiInflamatoria.Id, FoodId = cebola.Id },
+                    new DietFood { DietId = antiInflamatoria.Id, FoodId = azeitonas.Id },
                     new DietFood { DietId = antiInflamatoria.Id, FoodId = nozes.Id },
                     new DietFood { DietId = antiInflamatoria.Id, FoodId = amendoas.Id },
                     new DietFood { DietId = antiInflamatoria.Id, FoodId = arrozIntegral.Id },
                     new DietFood { DietId = antiInflamatoria.Id, FoodId = quinoa.Id },
-                    new DietFood { DietId = antiInflamatoria.Id, FoodId = uvas.Id },
-                    new DietFood { DietId = antiInflamatoria.Id, FoodId = banana.Id },
+                    new DietFood { DietId = antiInflamatoria.Id, FoodId = aveia.Id },
+                    new DietFood { DietId = antiInflamatoria.Id, FoodId = graoBico.Id },
+                    new DietFood { DietId = antiInflamatoria.Id, FoodId = feijao.Id },
+                    new DietFood { DietId = antiInflamatoria.Id, FoodId = brocolos.Id },
+                    new DietFood { DietId = antiInflamatoria.Id, FoodId = espinafres.Id },
+                    new DietFood { DietId = antiInflamatoria.Id, FoodId = couveGalega.Id },
+                    new DietFood { DietId = antiInflamatoria.Id, FoodId = tomate.Id },
+                    new DietFood { DietId = antiInflamatoria.Id, FoodId = cenoura.Id },
+                    new DietFood { DietId = antiInflamatoria.Id, FoodId = alho.Id },
+                    new DietFood { DietId = antiInflamatoria.Id, FoodId = cebola.Id },
+                    new DietFood { DietId = antiInflamatoria.Id, FoodId = pepino.Id },
+                    new DietFood { DietId = antiInflamatoria.Id, FoodId = couveFlor.Id },
+                    new DietFood { DietId = antiInflamatoria.Id, FoodId = maca.Id },
+                    new DietFood { DietId = antiInflamatoria.Id, FoodId = pera.Id },
+                    new DietFood { DietId = antiInflamatoria.Id, FoodId = laranja.Id },
+                    new DietFood { DietId = antiInflamatoria.Id, FoodId = cafe.Id },
 
                     // Mediterrânica
                     new DietFood { DietId = mediterranea.Id, FoodId = frango.Id },
@@ -148,38 +176,63 @@ namespace NutriPlanner.Data
                     new DietFood { DietId = mediterranea.Id, FoodId = atum.Id },
                     new DietFood { DietId = mediterranea.Id, FoodId = sardinha.Id },
                     new DietFood { DietId = mediterranea.Id, FoodId = bacalhau.Id },
-                    new DietFood { DietId = mediterranea.Id, FoodId = ovos.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = cavala.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = pescada.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = polvo.Id },
                     new DietFood { DietId = mediterranea.Id, FoodId = camarao.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = mexilhao.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = ovos.Id },
                     new DietFood { DietId = mediterranea.Id, FoodId = azeite.Id },
                     new DietFood { DietId = mediterranea.Id, FoodId = azeitonas.Id },
                     new DietFood { DietId = mediterranea.Id, FoodId = abacate.Id },
                     new DietFood { DietId = mediterranea.Id, FoodId = nozes.Id },
                     new DietFood { DietId = mediterranea.Id, FoodId = amendoas.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = arrozBranco.Id },
                     new DietFood { DietId = mediterranea.Id, FoodId = arrozIntegral.Id },
-                    new DietFood { DietId = mediterranea.Id, FoodId = paoIntegral.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = batata.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = batataDoce.Id },
                     new DietFood { DietId = mediterranea.Id, FoodId = massa.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = aveia.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = paoBranco.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = paoIntegral.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = broa.Id },
                     new DietFood { DietId = mediterranea.Id, FoodId = quinoa.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = cuscuz.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = milho.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = graoBico.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = feijao.Id },
                     new DietFood { DietId = mediterranea.Id, FoodId = tomate.Id },
                     new DietFood { DietId = mediterranea.Id, FoodId = cebola.Id },
                     new DietFood { DietId = mediterranea.Id, FoodId = alho.Id },
                     new DietFood { DietId = mediterranea.Id, FoodId = brocolos.Id },
                     new DietFood { DietId = mediterranea.Id, FoodId = espinafres.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = couveGalega.Id },
                     new DietFood { DietId = mediterranea.Id, FoodId = pepino.Id },
-                    new DietFood { DietId = mediterranea.Id, FoodId = banana.Id },
-                    new DietFood { DietId = mediterranea.Id, FoodId = manga.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = couveFlor.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = maca.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = pera.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = laranja.Id },
                     new DietFood { DietId = mediterranea.Id, FoodId = uvas.Id },
-                    new DietFood { DietId = mediterranea.Id, FoodId = tamaras.Id },
                     new DietFood { DietId = mediterranea.Id, FoodId = queijoCurado.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = mel.Id },
+                    new DietFood { DietId = mediterranea.Id, FoodId = cafe.Id },
 
                     // Cetogénica
                     new DietFood { DietId = cetogenica.Id, FoodId = frango.Id },
                     new DietFood { DietId = cetogenica.Id, FoodId = peru.Id },
+                    new DietFood { DietId = cetogenica.Id, FoodId = pato.Id },
                     new DietFood { DietId = cetogenica.Id, FoodId = vaca.Id },
                     new DietFood { DietId = cetogenica.Id, FoodId = porco.Id },
+                    new DietFood { DietId = cetogenica.Id, FoodId = borrego.Id },
                     new DietFood { DietId = cetogenica.Id, FoodId = salmao.Id },
+                    new DietFood { DietId = cetogenica.Id, FoodId = atum.Id },
                     new DietFood { DietId = cetogenica.Id, FoodId = sardinha.Id },
+                    new DietFood { DietId = cetogenica.Id, FoodId = cavala.Id },
+                    new DietFood { DietId = cetogenica.Id, FoodId = camarao.Id },
+                    new DietFood { DietId = cetogenica.Id, FoodId = mexilhao.Id },
                     new DietFood { DietId = cetogenica.Id, FoodId = ovos.Id },
                     new DietFood { DietId = cetogenica.Id, FoodId = azeite.Id },
+                    new DietFood { DietId = cetogenica.Id, FoodId = manteiga.Id },
                     new DietFood { DietId = cetogenica.Id, FoodId = azeitonas.Id },
                     new DietFood { DietId = cetogenica.Id, FoodId = abacate.Id },
                     new DietFood { DietId = cetogenica.Id, FoodId = nozes.Id },
@@ -187,9 +240,11 @@ namespace NutriPlanner.Data
                     new DietFood { DietId = cetogenica.Id, FoodId = queijoCurado.Id },
                     new DietFood { DietId = cetogenica.Id, FoodId = brocolos.Id },
                     new DietFood { DietId = cetogenica.Id, FoodId = espinafres.Id },
-                    new DietFood { DietId = cetogenica.Id, FoodId = couveFlor.Id },
+                    new DietFood { DietId = cetogenica.Id, FoodId = couveGalega.Id },
+                    new DietFood { DietId = cetogenica.Id, FoodId = tomate.Id },
                     new DietFood { DietId = cetogenica.Id, FoodId = pepino.Id },
-                    new DietFood { DietId = cetogenica.Id, FoodId = alho.Id },
+                    new DietFood { DietId = cetogenica.Id, FoodId = couveFlor.Id },
+                    new DietFood { DietId = cetogenica.Id, FoodId = cafe.Id },
 
                     // Vegetariana
                     new DietFood { DietId = vegetariana.Id, FoodId = tofu.Id },
@@ -203,14 +258,21 @@ namespace NutriPlanner.Data
                     new DietFood { DietId = vegetariana.Id, FoodId = batataDoce.Id },
                     new DietFood { DietId = vegetariana.Id, FoodId = massa.Id },
                     new DietFood { DietId = vegetariana.Id, FoodId = aveia.Id },
+                    new DietFood { DietId = vegetariana.Id, FoodId = paoBranco.Id },
                     new DietFood { DietId = vegetariana.Id, FoodId = paoIntegral.Id },
+                    new DietFood { DietId = vegetariana.Id, FoodId = broa.Id },
                     new DietFood { DietId = vegetariana.Id, FoodId = quinoa.Id },
                     new DietFood { DietId = vegetariana.Id, FoodId = cuscuz.Id },
+                    new DietFood { DietId = vegetariana.Id, FoodId = milho.Id },
+                    new DietFood { DietId = vegetariana.Id, FoodId = graoBico.Id },
+                    new DietFood { DietId = vegetariana.Id, FoodId = feijao.Id },
                     new DietFood { DietId = vegetariana.Id, FoodId = azeite.Id },
-                    new DietFood { DietId = vegetariana.Id, FoodId = azeitonas.Id },
+                    new DietFood { DietId = vegetariana.Id, FoodId = manteiga.Id },
                     new DietFood { DietId = vegetariana.Id, FoodId = abacate.Id },
+                    new DietFood { DietId = vegetariana.Id, FoodId = azeitonas.Id },
                     new DietFood { DietId = vegetariana.Id, FoodId = amendoas.Id },
                     new DietFood { DietId = vegetariana.Id, FoodId = nozes.Id },
+                    new DietFood { DietId = vegetariana.Id, FoodId = couveGalega.Id },
                     new DietFood { DietId = vegetariana.Id, FoodId = brocolos.Id },
                     new DietFood { DietId = vegetariana.Id, FoodId = espinafres.Id },
                     new DietFood { DietId = vegetariana.Id, FoodId = tomate.Id },
@@ -219,27 +281,40 @@ namespace NutriPlanner.Data
                     new DietFood { DietId = vegetariana.Id, FoodId = alho.Id },
                     new DietFood { DietId = vegetariana.Id, FoodId = pepino.Id },
                     new DietFood { DietId = vegetariana.Id, FoodId = couveFlor.Id },
+                    new DietFood { DietId = vegetariana.Id, FoodId = maca.Id },
+                    new DietFood { DietId = vegetariana.Id, FoodId = pera.Id },
+                    new DietFood { DietId = vegetariana.Id, FoodId = laranja.Id },
                     new DietFood { DietId = vegetariana.Id, FoodId = banana.Id },
                     new DietFood { DietId = vegetariana.Id, FoodId = manga.Id },
                     new DietFood { DietId = vegetariana.Id, FoodId = uvas.Id },
                     new DietFood { DietId = vegetariana.Id, FoodId = tamaras.Id },
                     new DietFood { DietId = vegetariana.Id, FoodId = mel.Id },
+                    new DietFood { DietId = vegetariana.Id, FoodId = cafe.Id },
 
                     // Vegana
                     new DietFood { DietId = vegana.Id, FoodId = tofu.Id },
                     new DietFood { DietId = vegana.Id, FoodId = tempeh.Id },
                     new DietFood { DietId = vegana.Id, FoodId = seitan.Id },
+                    new DietFood { DietId = vegana.Id, FoodId = arrozBranco.Id },
                     new DietFood { DietId = vegana.Id, FoodId = arrozIntegral.Id },
+                    new DietFood { DietId = vegana.Id, FoodId = batata.Id },
                     new DietFood { DietId = vegana.Id, FoodId = batataDoce.Id },
+                    new DietFood { DietId = vegana.Id, FoodId = massa.Id },
                     new DietFood { DietId = vegana.Id, FoodId = aveia.Id },
+                    new DietFood { DietId = vegana.Id, FoodId = paoBranco.Id },
                     new DietFood { DietId = vegana.Id, FoodId = paoIntegral.Id },
+                    new DietFood { DietId = vegana.Id, FoodId = broa.Id },
                     new DietFood { DietId = vegana.Id, FoodId = quinoa.Id },
                     new DietFood { DietId = vegana.Id, FoodId = cuscuz.Id },
+                    new DietFood { DietId = vegana.Id, FoodId = milho.Id },
+                    new DietFood { DietId = vegana.Id, FoodId = graoBico.Id },
+                    new DietFood { DietId = vegana.Id, FoodId = feijao.Id },
                     new DietFood { DietId = vegana.Id, FoodId = azeite.Id },
-                    new DietFood { DietId = vegana.Id, FoodId = azeitonas.Id },
                     new DietFood { DietId = vegana.Id, FoodId = abacate.Id },
+                    new DietFood { DietId = vegana.Id, FoodId = azeitonas.Id },
                     new DietFood { DietId = vegana.Id, FoodId = amendoas.Id },
                     new DietFood { DietId = vegana.Id, FoodId = nozes.Id },
+                    new DietFood { DietId = vegana.Id, FoodId = couveGalega.Id },
                     new DietFood { DietId = vegana.Id, FoodId = brocolos.Id },
                     new DietFood { DietId = vegana.Id, FoodId = espinafres.Id },
                     new DietFood { DietId = vegana.Id, FoodId = tomate.Id },
@@ -248,59 +323,93 @@ namespace NutriPlanner.Data
                     new DietFood { DietId = vegana.Id, FoodId = alho.Id },
                     new DietFood { DietId = vegana.Id, FoodId = pepino.Id },
                     new DietFood { DietId = vegana.Id, FoodId = couveFlor.Id },
+                    new DietFood { DietId = vegana.Id, FoodId = maca.Id },
+                    new DietFood { DietId = vegana.Id, FoodId = pera.Id },
+                    new DietFood { DietId = vegana.Id, FoodId = laranja.Id },
                     new DietFood { DietId = vegana.Id, FoodId = banana.Id },
                     new DietFood { DietId = vegana.Id, FoodId = manga.Id },
                     new DietFood { DietId = vegana.Id, FoodId = uvas.Id },
                     new DietFood { DietId = vegana.Id, FoodId = tamaras.Id },
+                    new DietFood { DietId = vegana.Id, FoodId = cafe.Id },
+
 
                     // Paleo
                     new DietFood { DietId = paleo.Id, FoodId = frango.Id },
                     new DietFood { DietId = paleo.Id, FoodId = peru.Id },
+                    new DietFood { DietId = paleo.Id, FoodId = pato.Id },
                     new DietFood { DietId = paleo.Id, FoodId = vaca.Id },
                     new DietFood { DietId = paleo.Id, FoodId = porco.Id },
                     new DietFood { DietId = paleo.Id, FoodId = borrego.Id },
                     new DietFood { DietId = paleo.Id, FoodId = salmao.Id },
                     new DietFood { DietId = paleo.Id, FoodId = atum.Id },
                     new DietFood { DietId = paleo.Id, FoodId = sardinha.Id },
-                    new DietFood { DietId = paleo.Id, FoodId = ovos.Id },
+                    new DietFood { DietId = paleo.Id, FoodId = cavala.Id },
+                    new DietFood { DietId = paleo.Id, FoodId = pescada.Id },
+                    new DietFood { DietId = paleo.Id, FoodId = polvo.Id },
                     new DietFood { DietId = paleo.Id, FoodId = camarao.Id },
+                    new DietFood { DietId = paleo.Id, FoodId = mexilhao.Id },
+                    new DietFood { DietId = paleo.Id, FoodId = ovos.Id },
                     new DietFood { DietId = paleo.Id, FoodId = batataDoce.Id },
                     new DietFood { DietId = paleo.Id, FoodId = azeite.Id },
                     new DietFood { DietId = paleo.Id, FoodId = abacate.Id },
+                    new DietFood { DietId = paleo.Id, FoodId = azeitonas.Id },
                     new DietFood { DietId = paleo.Id, FoodId = amendoas.Id },
                     new DietFood { DietId = paleo.Id, FoodId = nozes.Id },
+                    new DietFood { DietId = paleo.Id, FoodId = couveGalega.Id },
                     new DietFood { DietId = paleo.Id, FoodId = brocolos.Id },
                     new DietFood { DietId = paleo.Id, FoodId = espinafres.Id },
                     new DietFood { DietId = paleo.Id, FoodId = tomate.Id },
                     new DietFood { DietId = paleo.Id, FoodId = cenoura.Id },
+                    new DietFood { DietId = paleo.Id, FoodId = cebola.Id },
+                    new DietFood { DietId = paleo.Id, FoodId = alho.Id },
+                    new DietFood { DietId = paleo.Id, FoodId = pepino.Id },
+                    new DietFood { DietId = paleo.Id, FoodId = couveFlor.Id },
+                    new DietFood { DietId = paleo.Id, FoodId = maca.Id },
+                    new DietFood { DietId = paleo.Id, FoodId = pera.Id },
+                    new DietFood { DietId = paleo.Id, FoodId = laranja.Id },
                     new DietFood { DietId = paleo.Id, FoodId = banana.Id },
                     new DietFood { DietId = paleo.Id, FoodId = manga.Id },
                     new DietFood { DietId = paleo.Id, FoodId = uvas.Id },
                     new DietFood { DietId = paleo.Id, FoodId = tamaras.Id },
                     new DietFood { DietId = paleo.Id, FoodId = mel.Id },
+                    new DietFood { DietId = paleo.Id, FoodId = cafe.Id },
 
                     // Low Carb
                     new DietFood { DietId = lowCarb.Id, FoodId = frango.Id },
                     new DietFood { DietId = lowCarb.Id, FoodId = peru.Id },
+                    new DietFood { DietId = lowCarb.Id, FoodId = pato.Id },
                     new DietFood { DietId = lowCarb.Id, FoodId = vaca.Id },
                     new DietFood { DietId = lowCarb.Id, FoodId = porco.Id },
+                    new DietFood { DietId = lowCarb.Id, FoodId = borrego.Id },
                     new DietFood { DietId = lowCarb.Id, FoodId = salmao.Id },
                     new DietFood { DietId = lowCarb.Id, FoodId = atum.Id },
                     new DietFood { DietId = lowCarb.Id, FoodId = bacalhau.Id },
                     new DietFood { DietId = lowCarb.Id, FoodId = sardinha.Id },
-                    new DietFood { DietId = lowCarb.Id, FoodId = ovos.Id },
+                    new DietFood { DietId = lowCarb.Id, FoodId = cavala.Id },
+                    new DietFood { DietId = lowCarb.Id, FoodId = pescada.Id },
+                    new DietFood { DietId = lowCarb.Id, FoodId = polvo.Id },
                     new DietFood { DietId = lowCarb.Id, FoodId = camarao.Id },
+                    new DietFood { DietId = lowCarb.Id, FoodId = mexilhao.Id },
+                    new DietFood { DietId = lowCarb.Id, FoodId = ovos.Id },
+                    new DietFood { DietId = lowCarb.Id, FoodId = tofu.Id },
+                    new DietFood { DietId = lowCarb.Id, FoodId = tempeh.Id },
                     new DietFood { DietId = lowCarb.Id, FoodId = azeite.Id },
-                    new DietFood { DietId = lowCarb.Id, FoodId = azeitonas.Id },
+                    new DietFood { DietId = lowCarb.Id, FoodId = manteiga.Id },
                     new DietFood { DietId = lowCarb.Id, FoodId = abacate.Id },
+                    new DietFood { DietId = lowCarb.Id, FoodId = azeitonas.Id },
                     new DietFood { DietId = lowCarb.Id, FoodId = amendoas.Id },
                     new DietFood { DietId = lowCarb.Id, FoodId = nozes.Id },
                     new DietFood { DietId = lowCarb.Id, FoodId = queijoCurado.Id },
+                    new DietFood { DietId = lowCarb.Id, FoodId = couveGalega.Id },
                     new DietFood { DietId = lowCarb.Id, FoodId = brocolos.Id },
                     new DietFood { DietId = lowCarb.Id, FoodId = espinafres.Id },
                     new DietFood { DietId = lowCarb.Id, FoodId = tomate.Id },
+                    new DietFood { DietId = lowCarb.Id, FoodId = cenoura.Id },
+                    new DietFood { DietId = lowCarb.Id, FoodId = cebola.Id },
+                    new DietFood { DietId = lowCarb.Id, FoodId = alho.Id },
                     new DietFood { DietId = lowCarb.Id, FoodId = pepino.Id },
                     new DietFood { DietId = lowCarb.Id, FoodId = couveFlor.Id },
+                    new DietFood { DietId = lowCarb.Id, FoodId = cafe.Id },
 
                     // Low Fat
                     new DietFood { DietId = lowFat.Id, FoodId = frango.Id },
@@ -316,17 +425,26 @@ namespace NutriPlanner.Data
                     new DietFood { DietId = lowFat.Id, FoodId = aveia.Id },
                     new DietFood { DietId = lowFat.Id, FoodId = paoIntegral.Id },
                     new DietFood { DietId = lowFat.Id, FoodId = quinoa.Id },
+                    new DietFood { DietId = lowFat.Id, FoodId = cuscuz.Id },
+                    new DietFood { DietId = lowFat.Id, FoodId = milho.Id },
+                    new DietFood { DietId = lowFat.Id, FoodId = graoBico.Id },
+                    new DietFood { DietId = lowFat.Id, FoodId = feijao.Id },
+                    new DietFood { DietId = lowFat.Id, FoodId = couveGalega.Id },
                     new DietFood { DietId = lowFat.Id, FoodId = brocolos.Id },
                     new DietFood { DietId = lowFat.Id, FoodId = espinafres.Id },
                     new DietFood { DietId = lowFat.Id, FoodId = tomate.Id },
                     new DietFood { DietId = lowFat.Id, FoodId = cenoura.Id },
                     new DietFood { DietId = lowFat.Id, FoodId = cebola.Id },
+                    new DietFood { DietId = lowFat.Id, FoodId = alho.Id },
+                    new DietFood { DietId = lowFat.Id, FoodId = pepino.Id },
                     new DietFood { DietId = lowFat.Id, FoodId = couveFlor.Id },
+                    new DietFood { DietId = lowFat.Id, FoodId = maca.Id },
+                    new DietFood { DietId = lowFat.Id, FoodId = pera.Id },
+                    new DietFood { DietId = lowFat.Id, FoodId = laranja.Id },
                     new DietFood { DietId = lowFat.Id, FoodId = banana.Id },
                     new DietFood { DietId = lowFat.Id, FoodId = manga.Id },
                     new DietFood { DietId = lowFat.Id, FoodId = uvas.Id },
-                    new DietFood { DietId = lowFat.Id, FoodId = tamaras.Id },
-                    new DietFood { DietId = lowFat.Id, FoodId = mel.Id }
+                    new DietFood { DietId = lowFat.Id, FoodId = cafe.Id }
                  );
 
                 await _context.SaveChangesAsync();
@@ -364,12 +482,19 @@ namespace NutriPlanner.Data
                     Description = "Níveis elevados de colesterol no sangue, especialmente LDL. A alimentação deve privilegiar fibras, cereais integrais, leguminosas, frutos secos e gorduras insaturadas, limitando gorduras saturadas."
                 };
 
+                var doencaCeliaca = new HealthCondition
+                {
+                    Name = "Doença Celíaca",
+                    Description = "Reação imunológica ao glúten (proteína encontrada no trigo, cevada, centeio e derivados), que danifica o revestimento do intestino delgado. A dieta deve ser estritamente isenta de glúten."
+                };
+
                 _context.HealthConditions.AddRange(
                     diabetes,
                     hipertensao,
                     hiperuricemia,
                     anemia,
-                    colesterolAlto
+                    colesterolAlto,
+                    doencaCeliaca
                 );
 
                 await _context.SaveChangesAsync();
@@ -389,7 +514,10 @@ namespace NutriPlanner.Data
                     new() { HealthConditionId = diabetes.Id, FoodId = foods["Arroz Branco"].Id, Severity = FoodSeverity.Moderate },
                     new() { HealthConditionId = diabetes.Id, FoodId = foods["Batata"].Id, Severity = FoodSeverity.Moderate },
                     new() { HealthConditionId = diabetes.Id, FoodId = foods["Massa"].Id, Severity = FoodSeverity.Moderate },
+                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Pão Branco"].Id, Severity = FoodSeverity.Moderate },
                     new() { HealthConditionId = diabetes.Id, FoodId = foods["Pão Integral"].Id, Severity = FoodSeverity.Moderate },
+                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Broa de Milho"].Id, Severity = FoodSeverity.Moderate },
+                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Cuscuz"].Id, Severity = FoodSeverity.Moderate },
                     new() { HealthConditionId = diabetes.Id, FoodId = foods["Milho"].Id, Severity = FoodSeverity.Moderate },
 
                     new() { HealthConditionId = diabetes.Id, FoodId = foods["Banana"].Id, Severity = FoodSeverity.Moderate },
@@ -405,13 +533,12 @@ namespace NutriPlanner.Data
                     new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Vaca"].Id, Severity = FoodSeverity.Avoid },
                     new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Porco"].Id, Severity = FoodSeverity.Avoid },
                     new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Borrego"].Id, Severity = FoodSeverity.Avoid },
-
+                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Pato"].Id, Severity = FoodSeverity.Avoid },
                     new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Sardinha"].Id, Severity = FoodSeverity.Avoid },
                     new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Cavala"].Id, Severity = FoodSeverity.Avoid },
                     new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Camarão"].Id, Severity = FoodSeverity.Avoid },
                     new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Mexilhão"].Id, Severity = FoodSeverity.Avoid },
                     new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Polvo"].Id, Severity = FoodSeverity.Avoid },
-
                     new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Frango"].Id, Severity = FoodSeverity.Moderate },
                     new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Peru"].Id, Severity = FoodSeverity.Moderate },
                     new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Atum"].Id, Severity = FoodSeverity.Moderate },
@@ -424,6 +551,7 @@ namespace NutriPlanner.Data
                     new() { HealthConditionId = hipertensao.Id, FoodId = foods["Bacalhau"].Id, Severity = FoodSeverity.Moderate },
                     new() { HealthConditionId = hipertensao.Id, FoodId = foods["Azeitonas"].Id, Severity = FoodSeverity.Moderate },
                     new() { HealthConditionId = hipertensao.Id, FoodId = foods["Queijo Curado"].Id, Severity = FoodSeverity.Moderate },
+                    new() { HealthConditionId = hipertensao.Id, FoodId = foods["Manteiga"].Id, Severity = FoodSeverity.Moderate },
 
 
                     // =========================
@@ -433,7 +561,20 @@ namespace NutriPlanner.Data
                     new() { HealthConditionId = colesterolAlto.Id, FoodId = foods["Vaca"].Id, Severity = FoodSeverity.Moderate },
                     new() { HealthConditionId = colesterolAlto.Id, FoodId = foods["Porco"].Id, Severity = FoodSeverity.Moderate },
                     new() { HealthConditionId = colesterolAlto.Id, FoodId = foods["Borrego"].Id, Severity = FoodSeverity.Moderate },
-                    new() { HealthConditionId = colesterolAlto.Id, FoodId = foods["Queijo Curado"].Id, Severity = FoodSeverity.Moderate }
+                    new() { HealthConditionId = colesterolAlto.Id, FoodId = foods["Manteiga"].Id, Severity = FoodSeverity.Avoid },
+                    new() { HealthConditionId = colesterolAlto.Id, FoodId = foods["Queijo Curado"].Id, Severity = FoodSeverity.Moderate },
+
+                    // =========================
+                    // DOENÇA CELÍACA (Restrição de Glúten)
+                    // =========================
+
+                    new() { HealthConditionId = doencaCeliaca.Id, FoodId = foods["Massa"].Id, Severity = FoodSeverity.Avoid },
+                    new() { HealthConditionId = doencaCeliaca.Id, FoodId = foods["Pão Branco"].Id, Severity = FoodSeverity.Avoid },
+                    new() { HealthConditionId = doencaCeliaca.Id, FoodId = foods["Pão Integral"].Id, Severity = FoodSeverity.Avoid },
+                    new() { HealthConditionId = doencaCeliaca.Id, FoodId = foods["Broa de Milho"].Id, Severity = FoodSeverity.Avoid },
+                    new() { HealthConditionId = doencaCeliaca.Id, FoodId = foods["Cuscuz"].Id, Severity = FoodSeverity.Avoid },
+                    new() { HealthConditionId = doencaCeliaca.Id, FoodId = foods["Seitan"].Id, Severity = FoodSeverity.Avoid },
+                    new() { HealthConditionId = doencaCeliaca.Id, FoodId = foods["Aveia"].Id, Severity = FoodSeverity.Moderate }
 
                     // =========================
                     // Anemia
