@@ -1,29 +1,17 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import HealthConditionList from "../components/HealthConditionList";
-import FoodListByHealthCondition from "../components/FoodListByHealthCondition";
 import "../App.css";
 
 const API_URL = "https://localhost:7250/api";
 
-function HealthConditionsPage({ token }) {
+function HealthConditionsPage({ token}) {
     const [healthConditions, setHealthConditions] = useState([]);
     const [selectedHealthConditionId, setSelectedHealthConditionId] = useState(null);
     const [foods, setFoods] = useState([]);
     const [loadingHealthConditions, setLoadingHealthConditions] = useState(true);
-    const [loadingFoods, setLoadingFoods] = useState(false);
     const [userSelectionIds, setUserSelectionIds] = useState(new Set());
-
-    function handleSelectionAdded(foodId) {
-        setUserSelectionIds((prev) => new Set(prev).add(foodId));
-    }
-
-    function handleSelectionRemoved(foodId) {
-        setUserSelectionIds((prev) => {
-            const updated = new Set(prev);
-            updated.delete(foodId);
-            return updated;
-        });
-    }
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`${API_URL}/healthconditions`)
@@ -35,66 +23,25 @@ function HealthConditionsPage({ token }) {
                 setHealthConditions(data);
                 setLoadingHealthConditions(false);
             })
-            .catch ((err) => {
+            .catch((err) => {
                 console.error("Erro ao ir buscar condições de saúde:", err);
                 setLoadingHealthConditions(false);
             });
     }, []);
 
-    useEffect(() => {
-        if (!token) return;
-        fetch(`${API_URL}/UserFoods`, {
-            headers: { Authorization: `Bearer ${token}` },
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                setUserSelectionIds(new Set(data.map((s) => s.foodId)));
-            })
-            .catch((err) => console.error("Erro ao ir buscar seleções:", err));
-    }, [token]);
-
-    useEffect(() => {
-        if (selectedHealthConditionId === null) return;
-
-        setLoadingFoods(true);
-        fetch(`${API_URL}/healthconditions/${selectedHealthConditionId}/foods`)
-            .then((response) => response.json())
-            .then((data) => {
-                setFoods(data);
-                setLoadingFoods(false);
-            });
-    }, [selectedHealthConditionId]);
-
 
     return (
         <div className="page-content">
-            <h2>Condições de saúde</h2>
+            <h2>Condições de Saúde</h2>
             {loadingHealthConditions ? (
                 <p>A carregar...</p>
             ) : (
                     <HealthConditionList
                         healthConditions={healthConditions}
-                        selectedId={selectedHealthConditionId}
-                        onSelect={setSelectedHealthConditionId}
+                        token={token}
                     />
             )}
 
-            {selectedHealthConditionId && (
-                <>
-                    <h2>Alimentos a evitar/moderar</h2>
-                    {loadingFoods ? (
-                        <p>A carregar...</p>
-                    ) : (
-                            <FoodListByHealthCondition
-                                foods={foods}
-                                token={token}
-                                userSelectionIds={userSelectionIds}
-                                onSelectionAdded={handleSelectionAdded}
-                                onSelectionRemoved={handleSelectionRemoved}
-                            />
-                    )}
-                </>
-            )}
         </div>
     );
 }

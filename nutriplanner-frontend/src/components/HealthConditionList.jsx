@@ -1,14 +1,17 @@
 import HealthConditionCard from "./HealthConditionCard";
 
-function HealthConditionList({ healthConditions, selectedId, onSelect }) {
+function HealthConditionList({ healthConditions, token, selectedConditions, onSelectionAdded, onSelectionRemoved }) {
+
     return (
         <ul>
             {healthConditions.map((healthCondition) => (
                 <HealthConditionCard
                     key={healthCondition.id}
                     healthCondition={healthCondition}
-                    onSelect={onSelect}
-                    isActive={healthCondition.id === selectedId}
+                    token={token}
+                    isActive={selectedConditions.includes(healthCondition.id)}
+                    onSelectionAdded={onSelectionAdded}
+                    onSelectionRemoved={onSelectionRemoved}
                 />
             ))}
         </ul>

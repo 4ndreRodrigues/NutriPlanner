@@ -1,39 +1,50 @@
+/* ==========================================================================
+   1. VARIÁVEIS GLOBAIS & TIPOGRAFIA
+   ========================================================================== */
 :root {
-    /* paleta principal */
-    --color-primary: #16a34a;
-    --color-primary-dark: #15803d;
-    --color-primary-light: #dcfce7;
-
+    --color-primary: #10b981;
+    --color-primary-dark: #059669;
+    --color-primary-light: #ecfdf5;
     --color-accent: #f97316;
-
-    --text-primary: #1f2937;
-    --text-secondary: #6b7280;
+    --text-primary: #111827;
+    --text-secondary: #4b5563;
+    --text-muted: #9ca3af;
     --text-on-dark: #f9fafb;
-
-    --bg-base: #f9fafb;
+    --bg-base: #f3f4f6;
     --bg-surface: #ffffff;
-    --bg-dark: #111827;
-
+    --bg-dark: #0f172a;
     --border-color: #e5e7eb;
-
-    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-    --shadow-lg: 0 12px 32px rgba(0,0,0,0.12);
-
+    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --radius-sm: 6px;
     --radius-md: 10px;
     --radius-lg: 16px;
-
+    --radius-full: 9999px;
     --space-1: 4px;
     --space-2: 8px;
     --space-3: 16px;
     --space-4: 24px;
-    --space-5: 40px;
-
-    --color-danger: #dc2626;
-    --color-danger-light: #fee2e2;
+    --space-5: 32px;
+    --space-6: 48px;
+    --color-danger: #ef4444;
+    --color-danger-light: #fef2f2;
 }
 
-/* ---------- LAYOUT GERAL ---------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    -webkit-font-smoothing: antialiased;
+}
 
 .app-shell {
     min-height: 100vh;
@@ -48,39 +59,42 @@
 
 .main-content {
     flex: 1;
-    padding: var(--space-5);
+    padding: var(--space-6);
+    max-width: 1200px;
     margin: 0 auto;
     width: 100%;
 }
 
-/* ---------- NAVBAR ---------- */
-
+/* ==========================================================================
+   2. NAVBAR & DROPDOWN PERFIL
+   ========================================================================== */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--space-3) var(--space-5);
+    padding: var(--space-3) var(--space-6);
     background-color: var(--bg-dark);
     color: var(--text-on-dark);
     box-shadow: var(--shadow-md);
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 50;
 }
 
 .navbar-brand {
     display: flex;
     align-items: center;
     gap: var(--space-2);
-    font-weight: 800;
+    font-weight: 700;
     font-size: 1.25rem;
-    letter-spacing: -0.02em;
+    color: white;
+    text-decoration: none;
 }
 
 .navbar-logo {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
     background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
     display: flex;
     align-items: center;
@@ -94,45 +108,78 @@
     gap: var(--space-4);
 }
 
-    .navbar-links a,
-    .navbar-links button {
-        color: var(--text-on-dark);
+.profile-dropdown {
+    position: relative;
+}
+
+.profile-trigger {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-on-dark);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s ease;
+}
+
+    .profile-trigger:hover {
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+.profile-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    overflow: hidden;
+    z-index: 100;
+}
+
+    .profile-menu a,
+    .profile-menu button {
+        padding: 10px 16px;
+        text-align: left;
         text-decoration: none;
+        color: var(--text-primary);
         background: none;
         border: none;
         cursor: pointer;
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         font-weight: 500;
-        opacity: 0.85;
-        transition: opacity 0.15s ease;
+        display: block;
+        width: 100%;
+        transition: background-color 0.15s ease;
     }
 
-        .navbar-links a:hover,
-        .navbar-links button:hover {
-            opacity: 1;
+        .profile-menu a:hover,
+        .profile-menu button:hover {
+            background-color: var(--bg-base);
+            color: var(--color-primary-dark);
         }
 
-    .navbar-links .btn-cta {
-        background-color: var(--color-primary);
-        padding: 8px 18px;
-        border-radius: var(--radius-md);
-        opacity: 1;
-    }
-
-        .navbar-links .btn-cta:hover {
-            background-color: var(--color-primary-dark);
-        }
-
-/* ---------- SIDEBAR ---------- */
-
+/* ==========================================================================
+   3. SIDEBAR LATERAL
+   ========================================================================== */
 .sidebar {
-    width: 220px;
+    width: 260px;
     background-color: var(--bg-surface);
     border-right: 1px solid var(--border-color);
     padding: var(--space-4) var(--space-3);
     display: flex;
     flex-direction: column;
     gap: var(--space-1);
+    box-shadow: var(--shadow-xs);
 }
 
     .sidebar a {
@@ -141,333 +188,319 @@
         padding: 10px 14px;
         border-radius: var(--radius-md);
         font-weight: 500;
-        font-size: 0.95rem;
-        transition: all 0.15s ease;
+        font-size: 0.925rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.2s ease;
     }
 
-    .sidebar a:hover {
-        background-color: var(--color-primary-light);
-        color: var(--color-primary-dark);
-    }
+        .sidebar a:hover {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+        }
 
-    .sidebar a.active {
-        background-color: var(--color-primary-light);
-        color: var(--color-primary-dark);
-        font-weight: 700;
-    }
+        .sidebar a.active {
+            background-color: var(--color-primary-light);
+            color: var(--color-primary-dark);
+            font-weight: 600;
+        }
 
-/* ---------- HERO / HOME ---------- */
-
-.home-hero {
+/* ==========================================================================
+   4. DIET SWITCHER & DESCRIÇÃO
+   ========================================================================== */
+.diet-switcher {
     text-align: center;
-    padding: 100px 20px;
-    background: radial-gradient(circle at 50% 0%, var(--color-primary-light), var(--bg-base) 60%);
+    margin-bottom: var(--space-6);
 }
 
-    .home-hero h1 {
-        font-size: 2.75rem;
-        font-weight: 800;
-        letter-spacing: -0.03em;
-        margin-bottom: var(--space-3);
+    .diet-switcher h2 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: var(--space-2);
+    }
+
+select {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 16px;
+    background-color: var(--bg-surface) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    font-weight: 500;
+    box-shadow: var(--shadow-xs);
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234b5563' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px;
+    padding-right: 40px;
+    margin: 0 auto var(--space-2) auto;
+    display: block;
+}
+
+    select option {
+        background-color: var(--bg-surface);
         color: var(--text-primary);
     }
 
-    .home-hero p {
-        font-size: 1.15rem;
-        color: var(--text-secondary);
-        max-width: 480px;
-        margin: 0 auto;
-    }
-
-.home-actions {
-    margin-top: var(--space-5);
-    display: flex;
-    gap: var(--space-3);
-    justify-content: center;
-}
-
-.btn-primary, .btn-secondary {
-    padding: 12px 28px;
-    border-radius: var(--radius-md);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.btn-primary {
-    background-color: var(--color-primary);
-    color: white;
-    box-shadow: var(--shadow-md);
-}
-
-    .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-lg);
-    }
-
-.btn-secondary {
-    background-color: var(--bg-surface);
-    color: var(--text-primary);
-    border: 1px solid var(--border-color);
-}
-
-    .btn-secondary:hover {
+    select:focus {
+        outline: none;
         border-color: var(--color-primary);
-        color: var(--color-primary-dark);
+        box-shadow: 0 0 0 3px var(--color-primary-light);
     }
 
-/* ---------- CARDS (dietas, alimentos) ---------- */
-
-.diet-list {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3);
-    margin-bottom: var(--space-5);
-    box-sizing: border-box;
+.diet-description {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    max-width: 100%;
+    margin: 12px auto 0 auto;
+    line-height: 1.4;
+    text-align: left;
+    padding: 0 4px;
 }
 
-.diet-card {
-    list-style: none;
-    cursor: pointer;
-    padding: 14px 22px;
-    background-color: var(--bg-surface);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    font-weight: 600;
-    color: var(--text-primary);
-    box-shadow: var(--shadow-sm);
-    transition: all 0.15s ease;
-    box-sizing: border-box;
-    position: relative;
-}
-    .diet-card .diet-tooltip {
-        display: none;
-        position: absolute;
-        top: 90%;
-        left: 50%;
-        transform: translateX(-50%);
-        color: var(--bg-base);
-        background-color: var(--text-secondary);
-        border: 1px solid var(--border-color);
-        border-radius: var(--radius-md);
-        padding: 6px 10px;
-        font-size: 0.78rem;
-        font-weight: 400;
-        max-width: 500px;
-        text-align: center;
-        box-shadow: var(--shadow-md);
-        z-index: 1000;
-    }
-
-    .diet-card:hover {
-        border-color: var(--color-primary);
-        box-shadow: var(--shadow-md);
-        transform: translateY(-2px);
-        z-index: 10;
-    }
-
-        .diet-card:hover .diet-tooltip {
-            display: block;
-        }
-
-
-.healthcondition-card {
-    list-style: none;
-    cursor: pointer;
-    padding: 14px 22px;
-    background-color: var(--bg-surface);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    font-weight: 600;
-    color: var(--text-primary);
-    box-shadow: var(--shadow-sm);
-    transition: all 0.15s ease;
-    box-sizing: border-box;
-    position: relative;
-}
-
-    .healthcondition-card .healthcondition-tooltip {
-        display: none;
-        position: absolute;
-        top: 90%;
-        left: 50%;
-        transform: translateX(-50%);
-        color: var(--bg-base);
-        background-color: var(--text-secondary);
-        border: 1px solid var(--border-color);
-        border-radius: var(--radius-md);
-        padding: 6px 10px;
-        font-size: 0.78rem;
-        font-weight: 400;
-        max-width: 900px;
-        text-align: center;
-        box-shadow: var(--shadow-md);
-        z-index: 1000;
-    }
-
-    .healthcondition-card:hover {
-        border-color: var(--color-primary);
-        box-shadow: var(--shadow-md);
-        transform: translateY(-2px);
-        z-index: 10;
-    }
-
-        .healthcondition-card:hover .healthcondition-tooltip {
-            display: block;
-        }
-
+/* ==========================================================================
+   5. LISTAGEM DE ALIMENTOS & MACROS (Compactos e sem bolinhas)
+   ========================================================================== */
 .food-groups {
     display: flex;
     flex-direction: column;
-    gap: var(--space-4);
+    gap: var(--space-5);
+    margin-top: var(--space-4);
 }
 
 .food-group h3 {
-    font-size: 1rem;
+    font-size: 0.875rem;
     font-weight: 700;
-    color: var(--color-primary-dark);
-    margin-bottom: var(--space-2);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-3);
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: var(--space-1);
 }
 
 .food-list {
     list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: var(--space-3);
+    margin-top: var(--space-3);
 }
 
 .food-card {
     background-color: var(--bg-surface);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
-    padding: var(--space-3);
-    box-shadow: var(--shadow-sm);
-    transition: box-shadow 0.15s ease;
-}
-
-    .food-card:hover {
-        box-shadow: var(--shadow-md);
-    }
-
-.food-card-header {
+    padding: 10px 14px;
+    box-shadow: var(--shadow-xs);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: var(--space-2);
+    gap: 10px;
+    transition: border-color 0.2s ease;
 }
 
-    .food-card-header span {
-        font-weight: 600;
+    .food-card:hover {
+        border-color: var(--color-primary);
     }
+
+.food-card-identity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+}
+
+.food-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: var(--radius-full);
+    background: var(--color-primary-light);
+    color: var(--color-primary-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.food-card-header span {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 .food-card-actions {
     display: flex;
-    gap: var(--space-2);
-}
-
-
-.nutrition-details {
-    list-style: none;
-    margin-top: var(--space-3);
-    padding-top: var(--space-3);
-    border-top: 1px dashed var(--border-color);
-    display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    gap: var(--space-3);
-    font-size: 0.88rem;
+    gap: 6px;
+    flex-shrink: 0;
+    font-size: 0.65rem;
+}
+
+.food-macros,
+.food-card ul,
+.food-card li {
+    list-style: none !important;
+    list-style-type: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.food-macros {
+    font-size: 0.55rem;
     color: var(--text-secondary);
+    //background-color: var(--bg-base);
+    padding: 6px 8px;
+    border-radius: var(--radius-sm);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px 8px;
+    border: none;
+    flex-shrink: 0;
 }
 
-.food-error {
-    color: #dc2626;
-    font-size: 0.85rem;
-    margin-top: var(--space-1);
+/* ==========================================================================
+   6. CARTÕES DE CONDIÇÕES DE SAÚDE & DIETAS (Tooltip)
+   ========================================================================== */
+.diet-list,
+.healthcondition-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--space-6);
+    margin-top: var(--space-4);
 }
 
-.food-loading {
-    color: var(--text-secondary);
-    font-size: 0.85rem;
-}
-
-/* ---------- FORMS (login/register) ---------- */
-
-.container {
-    max-width: 400px;
-    margin: 60px auto;
+.diet-card,
+.healthcondition-card {
+    list-style: none;
+    cursor: pointer;
+    padding: var(--space-4);
     background-color: var(--bg-surface);
-    padding: var(--space-5);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    color: var(--text-primary);
+    box-shadow: var(--shadow-xs);
+    transition: all 0.2s ease;
+    position: relative;
+    text-align: center;
 }
 
-    .container h1 {
-        font-size: 1.5rem;
-        margin-bottom: var(--space-4);
-        text-align: center;
+    .diet-card:hover,
+    .healthcondition-card:hover {
+        border-color: var(--color-primary);
+        box-shadow: var(--shadow-md);
+        transform: translateY(-2px);
     }
 
-    .container input {
-        width: 100%;
-        padding: 12px 14px;
-        margin-bottom: var(--space-3);
-        border: 1px solid var(--border-color);
+    .healthcondition-card.active {
+        border: 2px solid var(--color-primary);
+        background-color: var(--color-primary-light);
+        color: var(--color-primary-dark);
+    }
+
+    .healthcondition-card .healthcondition-tooltip {
+        display: none !important;
+    }
+
+    .healthcondition-card:hover .healthcondition-tooltip {
+        display: block !important;
+        position: absolute;
+        bottom: calc(100% + 10px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: 500px;
+        background-color: var(--bg-dark);
+        color: #ffffff;
+        font-size: 0.8rem;
+        font-weight: 400;
+        padding: 10px 14px;
         border-radius: var(--radius-md);
-        font-size: 0.95rem;
-        transition: border-color 0.15s ease;
+        box-shadow: var(--shadow-lg);
+        z-index: 100;
+        pointer-events: none;
+        text-align: left;
+        line-height: 1.4;
     }
 
-        .container input:focus {
-            outline: none;
-            border-color: var(--color-primary);
-        }
-
-    .container button {
-        width: 100%;
-        padding: 12px;
-        background-color: var(--color-primary);
-        color: white;
-        border: none;
-        border-radius: var(--radius-md);
-        font-weight: 600;
-        cursor: pointer;
-        transition: background-color 0.15s ease;
-    }
-
-        .container button:hover:not(:disabled) {
-            background-color: var(--color-primary-dark);
-        }
-
-        .container button:disabled {
-            background-color: var(--border-color);
-            cursor: not-allowed;
-        }
-
+/* ==========================================================================
+   7. PÁGINA DE PERFIL & BOTÕES
+   ========================================================================== */
 .page-content {
     max-width: 800px;
-    margin: 40px auto;
+    margin: var(--space-6) auto;
     background-color: var(--bg-surface);
-    padding: var(--space-4);
+    padding: var(--space-6);
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.profile-user-main {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.profile-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-full);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+}
+
+.profile-user-info h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.profile-user-info p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 2px;
+}
+
+.btn-outline, .btn-danger, .btn-solid {
+    padding: 6px 12px;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 .btn-outline {
-    min-width: 110px;
-    text-align: center;
-    font-size: 0.82rem;
-    padding: 6px 14px;
-    border-radius: 999px;
     border: 1px solid var(--border-color);
     background-color: var(--bg-base);
     color: var(--text-primary);
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.15s ease;
 }
 
     .btn-outline:hover {
@@ -476,17 +509,9 @@
     }
 
 .btn-danger {
-    min-width: 110px;
-    text-align: center;
-    font-size: 0.82rem;
-    padding: 6px 14px;
-    border-radius: 999px;
     border: 1px solid var(--color-danger);
     background-color: var(--bg-surface);
     color: var(--color-danger);
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.15s ease;
 }
 
     .btn-danger:hover {
@@ -494,18 +519,11 @@
     }
 
 .btn-solid {
-    min-width: 110px;
-    text-align: center;
-    font-size: 0.82rem;
-    padding: 6px 14px;
-    border-radius: 999px;
-    border: 1px solid var(--border-color);
+    border: 1px solid transparent;
     background-color: var(--color-primary-light);
     color: var(--color-primary-dark);
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.15s ease;
 }
+
     .btn-solid:hover {
         background-color: var(--color-primary);
         color: white;

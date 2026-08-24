@@ -2,6 +2,14 @@ import { useState } from "react";
 
 const API_URL = "https://localhost:7250/api";
 
+const categoryIcons = {
+    "Proteínas": "🥩",
+    "Hidratos": "🍞",
+    "Gorduras": "🥑",
+    "Vegetais": "🥦",
+    "Frutas": "🍎"
+};
+
 function FoodCard({ food, token, isSelected, onSelectionAdded, onSelectionRemoved }) {
     const [nutrition, setNutrition] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -82,11 +90,11 @@ function FoodCard({ food, token, isSelected, onSelectionAdded, onSelectionRemove
     return (
         <li className="food-card">
             <div className="food-card-header">
-                <span>{food.name}</span>
+                <div className="food-card-identity">
+                    <span className="food-icon">{categoryIcons[food.category] || "🍽️"}</span>
+                    <span>{food.name}</span>
+                </div>
                 <div className="food-card-actions">
-                    <button className="btn-outline" onClick={handleToggle}>
-                        {showNutrition ? "Ocultar" : "Ver macros"}
-                    </button>
                     {!isSelected && (
                         <button className="btn-solid" onClick={handleSelect}>
                             Adicionar
@@ -96,7 +104,10 @@ function FoodCard({ food, token, isSelected, onSelectionAdded, onSelectionRemove
                         <button className="btn-danger" onClick={handleDeselect}>
                             Remover
                         </button>
-                )}
+                    )}
+                    <button className="btn-outline" onClick={handleToggle}>
+                        {showNutrition ? "Ocultar" : "Ver macros"}
+                    </button>
                 </div>
             </div>
 
@@ -104,7 +115,7 @@ function FoodCard({ food, token, isSelected, onSelectionAdded, onSelectionRemove
             {error && <p className="food-error">{error}</p>}
 
             {showNutrition && nutrition && (
-                <ul className="nutrition-details">
+                <ul className="food-macros">
                     <li>Calorias: {nutrition.calories} kcal</li>
                     <li>Proteína: {nutrition.protein} g</li>
                     <li>Hidratos: {nutrition.carbs} g</li>

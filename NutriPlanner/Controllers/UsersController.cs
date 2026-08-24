@@ -25,5 +25,17 @@ namespace NutriPlanner.Controllers
             return NoContent();
         }
 
+        [Authorize]
+        [HttpGet("me")]
+        public async Task<IActionResult> GetProfile()
+        {
+            var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
+            if (userId == null) return Unauthorized();
+
+            var profile = await _userService.GetProfileAsync(userId);
+            if (profile == null) return NotFound();
+
+            return Ok(profile);
+        }
     }
 }

@@ -7,5 +7,6 @@ namespace NutriPlanner.Services
     public interface IUserService
     {
         Task<bool> SetDietAsync(string userId, int dietId);
+        Task<UserProfileDto?> GetProfileAsync(string userId);
     }
 }

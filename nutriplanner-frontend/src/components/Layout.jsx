@@ -1,5 +1,7 @@
 import { Outlet, Link, NavLink, useNavigate } from "react-router-dom";
 
+import ProfileDropdown from "./ProfileDropdown";
+
 function Layout({ token, lastDietId, onLogout }) {
     const navigate = useNavigate();
 
@@ -16,10 +18,7 @@ function Layout({ token, lastDietId, onLogout }) {
                 </Link>
                 <div className="navbar-links">
                     {token ? (
-                        <>
-                            <Link to="/profile">Perfil</Link>
-                            <button onClick={handleLogout}>Sair</button>
-                        </>
+                        <ProfileDropdown onLogout={onLogout} />
                     ) : (
                         <>
                             <Link to="/login">Entrar</Link>
@@ -32,10 +31,9 @@ function Layout({ token, lastDietId, onLogout }) {
             <div className="app-body">
                 {token && (
                     <aside className="sidebar">
-                        <NavLink to={lastDietId ?`/diets/${lastDietId}` : "/diets"}>Dietas</NavLink>
-                        <NavLink to="/healthconditions">Condições</NavLink>
-                        <NavLink to="/selections">A minha seleção</NavLink>
-                        <NavLink to="/foods">Alimentos</NavLink>
+                        <NavLink to={lastDietId ? `/diets/${lastDietId}` : "/diets"}>🥗 Dietas</NavLink>
+                        <NavLink to="/healthconditionfoods">❤️ Condições</NavLink>
+                        <NavLink to="/foods">🍽️ Alimentos</NavLink>
                     </aside>
                 )}
 

@@ -13,7 +13,7 @@ function DietCard({ diet, token, onSelect }) {
             headers: {
                 Authorization: `Bearer ${token}`
             }
-        })
+            })
             .then((res) => {
                 if (!res.ok) throw new Error("Erro ao selecionar dieta");
 

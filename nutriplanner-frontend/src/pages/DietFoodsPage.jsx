@@ -78,7 +78,7 @@ function DietFoodsPage({ token }) {
     return (
         <div className="page-content">
             <div className="diet-switcher">
-                <h2>{currentDiet?.name}</h2>
+                <h2>Dieta</h2>
                 <select value={dietId} onChange={(e) => navigate(`/diets/${e.target.value}`)}>
                     {diets.map((diet) => (
                         <option key={diet.id} value={diet.id}>
@@ -86,7 +86,9 @@ function DietFoodsPage({ token }) {
                         </option>
                     ))}
                 </select>
+                <p className="diet-description">{currentDiet?.description}</p>
             </div>
+
             {dietId !== null && (
                 <>
                     <h2>Alimentos</h2>
