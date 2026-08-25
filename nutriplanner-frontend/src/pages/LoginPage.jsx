@@ -10,7 +10,7 @@ function LoginPage({ onLoginSuccess, onDietIdSuccess }) {
     const [conditions, setConditions] = useState([]);
     const navigate = useNavigate();
 
-    function healthConditionCheck() {
+    function healthConditionCheck(token) {
         fetch(`${API_URL}/UserHealthCondition`, { headers: { Authorization: `Bearer ${token}` } })
             .then((res) => res.json())
             .then(setConditions);
@@ -26,7 +26,7 @@ function LoginPage({ onLoginSuccess, onDietIdSuccess }) {
         .then(res => res.json())
         .then(data => {
             onLoginSuccess(data.token);
-            healthConditionCheck();
+            healthConditionCheck(data.token);
             if (data.dietId == null) {
                 navigate("/diets");
             }

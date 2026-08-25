@@ -148,10 +148,10 @@ body {
 
     .profile-menu a,
     .profile-menu button {
-        padding: 10px 16px;
+        padding: 8px 12px;
         text-align: left;
         text-decoration: none;
-        color: var(--text-primary);
+        color: var(--text-primary) !important;
         background: none;
         border: none;
         cursor: pointer;
@@ -164,8 +164,8 @@ body {
 
         .profile-menu a:hover,
         .profile-menu button:hover {
-            background-color: var(--bg-base);
-            color: var(--color-primary-dark);
+            background-color: var(--bg-base) !important;
+            color: var(--color-primary) !important;
         }
 
 /* ==========================================================================
@@ -385,7 +385,7 @@ select {
 .healthcondition-card {
     list-style: none;
     cursor: pointer;
-    padding: var(--space-4);
+    padding: 10px var(--space-4);
     background-color: var(--bg-surface);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
@@ -410,19 +410,17 @@ select {
         color: var(--color-primary-dark);
     }
 
+    /* Tooltip partilhado para Dietas e Condições */
+    .diet-card .diet-tooltip,
     .healthcondition-card .healthcondition-tooltip {
-        display: none !important;
-    }
-
-    .healthcondition-card:hover .healthcondition-tooltip {
-        display: block !important;
         position: absolute;
         bottom: calc(100% + 10px);
         left: 50%;
-        transform: translateX(-50%);
-        width: 500px;
-        background-color: var(--bg-dark);
-        color: #ffffff;
+        transform: translateX(-50%) translateY(5px);
+        width: 260px;
+        max-width: 180vw;
+        background-color: var(--text-secondary);
+        color: var(--bg-surface);
         font-size: 0.8rem;
         font-weight: 400;
         padding: 10px 14px;
@@ -432,6 +430,30 @@ select {
         pointer-events: none;
         text-align: left;
         line-height: 1.4;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+        /* Seta discreta em baixo do tooltip */
+        .diet-card .diet-tooltip::after,
+        .healthcondition-card .healthcondition-tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--text-primary) transparent transparent transparent;
+        }
+
+    /* Ao fazer hover, o tooltip respetivo torna-se visível */
+    .diet-card:hover .diet-tooltip,
+    .healthcondition-card:hover .healthcondition-tooltip {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
     }
 
 /* ==========================================================================
@@ -528,3 +550,141 @@ select {
         background-color: var(--color-primary);
         color: white;
     }
+
+/* ==========================================================================
+   AUTENTICAÇÃO (Login & Register)
+   ========================================================================== */
+.auth-card {
+    max-width: 420px;
+    margin: var(--space-6) auto;
+    background-color: var(--bg-surface);
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+}
+
+    .auth-card h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: var(--space-4);
+    }
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+    .auth-form input {
+        width: 100%;
+        padding: 10px 14px;
+        background-color: var(--bg-surface);
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        font-size: 0.95rem;
+        outline: none;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .auth-form input:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px var(--color-primary-light);
+        }
+
+    .auth-form button {
+        width: 100%;
+        padding: 10px 16px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        border-radius: var(--radius-md);
+        margin-top: var(--space-2);
+        cursor: pointer;
+    }
+
+/* ==========================================================================
+   HOMEPAGE & HERO SECTION
+   ========================================================================== */
+.home-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 70vh;
+    padding: var(--space-6);
+    gap: var(--space-3);
+}
+
+    .home-hero h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--text-primary);
+    }
+
+    .home-hero p {
+        font-size: 1.05rem;
+        color: var(--text-secondary);
+        max-width: 500px;
+    }
+
+.home-actions {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-3);
+}
+
+/* Estilos para os botões da Home e Navbar */
+.btn-primary,
+.btn-secondary {
+    padding: 10px 20px;
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+    .btn-primary:hover {
+        background-color: var(--color-primary-dark);
+    }
+
+.btn-secondary {
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+    .btn-secondary:hover {
+        border-color: var(--color-primary);
+        color: var(--color-primary-dark);
+    }
+
+/* Ajuste dos links na Navbar quando não está logado */
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+    .navbar-links a {
+        color: var(--text-on-dark);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95rem;
+        padding: 6px 12px;
+        border-radius: var(--radius-sm);
+        transition: background 0.2s ease;
+    }
+
+        .navbar-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }

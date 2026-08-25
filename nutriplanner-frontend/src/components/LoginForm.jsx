@@ -5,21 +5,23 @@ function LoginForm({ onLogin }) {
     const [password, setPassword] = useState("");
 
     return (
-        <div>
-            <h1 >Login</h1>
-            <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <button onClick={() => onLogin(email, password)}>Entrar</button>
+        <div className="auth-card">
+            <h2>Login</h2>
+            <div className="auth-form">
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <button className="btn-solid" onClick={() => onLogin(email, password)}>Entrar</button>
+            </div>
         </div>
     );
 }

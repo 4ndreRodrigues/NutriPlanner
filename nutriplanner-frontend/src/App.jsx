@@ -48,7 +48,7 @@ function App() {
                 <Route path="/healthconditions" element={token ? <HealthConditionsPage token={token} /> : <Navigate to="/login" />} />
                 <Route path="/selections" element={token ? <UserSelectionPage token={token} /> : <Navigate to="/login" />} />
                 <Route path="/foods" element={token ? <FoodPage token={token} /> : <Navigate to="/login" />} />
-                <Route path="/profile" element={token ? <ProfilePage token={token} /> : <Navigate to="/login" />} />
+                <Route path="/profile" element={token ? <ProfilePage token={token} handleDietSelection={handleSetDietId} /> : <Navigate to="/login" />} />
             </Route>
         </Routes>
     );

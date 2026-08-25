@@ -5,7 +5,7 @@ import "../App.css";
 
 const API_URL = "https://localhost:7250/api";
 
-function ProfilePage({ token }) {
+function ProfilePage({ token, handleDietSelection }) {
     const [profile, setProfile] = useState(null);
     const [selectedConditions, setSelectedConditions] = useState([]);
     const [healthConditions, setHealthConditions] = useState([]);
@@ -78,6 +78,7 @@ function ProfilePage({ token }) {
                     dietId: newDietId,
                     dietName: selectedDiet ? selectedDiet.name : prev.dietName
                 }));
+                handleDietSelection(newDietId);
             })
             .catch((err) => {
                 console.error(err);
