@@ -6,7 +6,7 @@ function HealthConditionCard({ healthCondition, token, isActive, onSelectionAdde
     const [error, setError] = useState(null);
 
     function handleSelect() {
-        fetch(`${API_URL}/UserHealthCondition`, {
+        fetch(`${API_URL}/UserHealthConditions`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -28,7 +28,7 @@ function HealthConditionCard({ healthCondition, token, isActive, onSelectionAdde
     }
 
     function handleDeselect() {
-        fetch(`${API_URL}/UserHealthCondition/${healthCondition.id}`, {
+        fetch(`${API_URL}/UserHealthConditions/${healthCondition.id}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`

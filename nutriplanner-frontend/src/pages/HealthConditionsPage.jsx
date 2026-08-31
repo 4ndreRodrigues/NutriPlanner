@@ -26,7 +26,7 @@ function HealthConditionsPage({ token }) {
                 setLoadingHealthConditions(false);
             });
 
-        fetch(`${API_URL}/UserHealthCondition`, { headers: { Authorization: `Bearer ${token}` } })
+        fetch(`${API_URL}/UserHealthConditions`, { headers: { Authorization: `Bearer ${token}` } })
             .then((res) => res.json())
             .then((data) => {
                 const conditionIds = data.map((s) => s.healthConditionId);
