@@ -93,7 +93,7 @@ namespace NutriPlanner.Services
                     Id = hcf.Food.Id,
                     Name = hcf.Food.Name,
                     Category = hcf.Food.Category,
-                    Severity = hcf.Severity
+                    Severity = hcf.Severity.ToString()
                 })
                 .ToListAsync();
         }

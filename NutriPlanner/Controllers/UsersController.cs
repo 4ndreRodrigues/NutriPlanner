@@ -25,6 +25,18 @@ namespace NutriPlanner.Controllers
             return NoContent();
         }
 
+        [HttpDelete("me/diet")]
+        public async Task<IActionResult> DeleteDiet()
+        {
+            var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
+            if (userId == null) return Unauthorized();
+
+            var success = await _userService.SetDietAsync(userId, null);
+            if (!success) return NotFound();
+
+            return NoContent();
+        }
+
         [Authorize]
         [HttpGet("me")]
         public async Task<IActionResult> GetProfile()
@@ -36,6 +48,16 @@ namespace NutriPlanner.Controllers
             if (profile == null) return NotFound();
 
             return Ok(profile);
+        }
+
+        [Authorize]
+        [HttpGet("me/safe-foods")]
+        public async Task<IActionResult> GetSafeFoods()
+        {
+            var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
+            if (userId == null) return Unauthorized();
+            var safeFoods = await _userService.GetSafeFoodsAsync(userId);
+            return Ok(safeFoods);
         }
     }
 }

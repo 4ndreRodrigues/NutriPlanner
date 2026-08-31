@@ -34,6 +34,7 @@ function Layout({ token, lastDietId, onLogout }) {
                         <NavLink to={lastDietId ? `/diets/${lastDietId}` : "/diets"}>🥗 Dietas</NavLink>
                         <NavLink to="/healthconditionfoods">❤️ Condições</NavLink>
                         <NavLink to="/foods">🍽️ Alimentos</NavLink>
+                        <NavLink to="/me/safefoods">🛡️ O que posso comer?</NavLink>
                     </aside>
                 )}
 

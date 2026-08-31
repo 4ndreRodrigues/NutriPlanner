@@ -2,6 +2,7 @@
 {
     public enum FoodSeverity
     {
+        Safe,
         Moderate,
         Avoid
     }

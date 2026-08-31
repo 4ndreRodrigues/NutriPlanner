@@ -18,7 +18,7 @@ function DietCard({ diet, token, onSelect }) {
                 if (!res.ok) throw new Error("Erro ao selecionar dieta");
 
                 onSelect(diet.id);
-                navigate(`/diets/${diet.id}`);
+                navigate(`/healthconditions`);
             })      
             .catch((err) => {
                 console.error(err);

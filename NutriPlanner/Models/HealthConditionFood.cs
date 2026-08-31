@@ -1,6 +1,4 @@
-﻿
-
-namespace NutriPlanner.Models
+﻿namespace NutriPlanner.Models
 {
     public class HealthConditionFood
     {
@@ -9,5 +7,6 @@ namespace NutriPlanner.Models
         public int FoodId { get; set; }
         public Food Food { get; set; }
         public FoodSeverity Severity { get; set; }  // "Moderate" ou "Avoid"
+        public string? Reason { get; set; }
     }
 }

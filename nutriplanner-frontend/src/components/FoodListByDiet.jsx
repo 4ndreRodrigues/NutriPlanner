@@ -1,6 +1,5 @@
 import FoodCard from "./FoodCard";
 
-// agrupa o array plano de alimentos num objeto: { "Proteína": [...], "Hidrato": [...], ... }
 function groupByCategory(foods) {
     return foods.reduce((groups, food) => {
         const category = food.category || "Outros";

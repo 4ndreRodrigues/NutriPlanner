@@ -12,15 +12,15 @@ namespace NutriPlanner.Data
             if (!_context.Foods.Any())
             {
                 // Dietas
-                var carnivora = new Diet { Name = "Carnívora", Description = "Dieta rica em proteínas animais" };
-                var antiInflamatoria = new Diet { Name = "Anti-inflamatória", Description = "Dieta com alimentos anti-inflamatórios" };
-                var mediterranea = new Diet { Name = "Mediterrânea", Description = "Dieta baseada na alimentação tradicional dos países do Mediterrâneo" };
-                var cetogenica = new Diet { Name = "Cetogénica", Description = "Dieta com baixo teor de carboidratos e alto teor de gorduras" };
-                var vegetariana = new Diet { Name = "Vegetariana", Description = "Dieta baseada em alimentos de origem vegetal" };
-                var vegana = new Diet { Name = "Vegana", Description = "Dieta que exclui todos os produtos de origem animal" };
-                var paleo = new Diet { Name = "Paleo", Description = "Dieta baseada em alimentos consumidos pelos caçadores-recoletores" };
-                var lowCarb = new Diet { Name = "Low Carb", Description = "Dieta com baixo teor de carboidratos" };
-                var lowFat = new Diet { Name = "Low Fat", Description = "Dieta com baixo teor de gorduras" };
+                var carnivora = new Diet { Name = "Carnívora", Description = "Dieta rica em proteínas animais." };
+                var antiInflamatoria = new Diet { Name = "Anti-inflamatória", Description = "Dieta com alimentos anti-inflamatórios." };
+                var mediterranea = new Diet { Name = "Mediterrânea", Description = "Dieta baseada na alimentação tradicional dos países do Mediterrâneo." };
+                var cetogenica = new Diet { Name = "Cetogénica", Description = "Dieta com baixo teor de carboidratos e alto teor de gorduras." };
+                var vegetariana = new Diet { Name = "Vegetariana", Description = "Dieta baseada em alimentos de origem vegetal." };
+                var vegana = new Diet { Name = "Vegana", Description = "Dieta que exclui todos os produtos de origem animal." };
+                var paleo = new Diet { Name = "Paleo", Description = "Dieta baseada em alimentos consumidos pelos caçadores-recoletores." };
+                var lowCarb = new Diet { Name = "Low Carb", Description = "Dieta com baixo teor de carboidratos." };
+                var lowFat = new Diet { Name = "Low Fat", Description = "Dieta com baixo teor de gorduras." };
 
                 _context.Diets.AddRange(
                     carnivora,
@@ -511,70 +511,70 @@ namespace NutriPlanner.Data
                     // DIABETES
                     // =========================
 
-                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Arroz Branco"].Id, Severity = FoodSeverity.Moderate },
-                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Batata"].Id, Severity = FoodSeverity.Moderate },
-                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Massa"].Id, Severity = FoodSeverity.Moderate },
-                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Pão Branco"].Id, Severity = FoodSeverity.Moderate },
-                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Pão Integral"].Id, Severity = FoodSeverity.Moderate },
-                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Broa de Milho"].Id, Severity = FoodSeverity.Moderate },
-                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Cuscuz"].Id, Severity = FoodSeverity.Moderate },
-                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Milho"].Id, Severity = FoodSeverity.Moderate },
+                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Arroz Branco"].Id, Severity = FoodSeverity.Moderate, Reason = "Elevado índice glicémico, pode provocar picos rápidos de glicose no sangue." },
+                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Batata"].Id, Severity = FoodSeverity.Moderate, Reason = "Rica em hidratos de carbono de rápida absorção; deve ser consumida com moderação." },
+                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Massa"].Id, Severity = FoodSeverity.Moderate, Reason = "Fonte significativa de hidratos de carbono refinados que afetam a glicemia." },
+                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Pão Branco"].Id, Severity = FoodSeverity.Moderate, Reason = "Farinha refinada que é absorvida rapidamente, aumentando o açúcar no sangue." },
+                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Pão Integral"].Id, Severity = FoodSeverity.Moderate, Reason = "Ainda que tenha fibra, contém hidratos de carbono que devem ser contabilizados." },
+                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Broa de Milho"].Id, Severity = FoodSeverity.Moderate, Reason = "Contém hidratos de carbono do milho, exigindo controlo das порções." },
+                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Cuscuz"].Id, Severity = FoodSeverity.Moderate, Reason = "Derivado de cereal refinado que impacta os níveis de glicemia." },
+                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Milho"].Id, Severity = FoodSeverity.Moderate, Reason = "Cereal com teor considerável de amido e hidratos de carbono." },
 
-                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Banana"].Id, Severity = FoodSeverity.Moderate },
-                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Manga"].Id, Severity = FoodSeverity.Moderate },
-                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Uvas"].Id, Severity = FoodSeverity.Moderate },
-                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Tâmaras"].Id, Severity = FoodSeverity.Moderate },
-                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Mel"].Id, Severity = FoodSeverity.Moderate },
+                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Banana"].Id, Severity = FoodSeverity.Moderate, Reason = "Fruta com maior concentração de açúcares naturais e hidratos de carbono." },
+                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Manga"].Id, Severity = FoodSeverity.Moderate, Reason = "Fruta doce rica em açúcares livres, requer moderação na porção." },
+                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Uvas"].Id, Severity = FoodSeverity.Moderate, Reason = "Elevado teor de açúcar natural (frutose), podendo elevar a glicemia rapidamente." },
+                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Tâmaras"].Id, Severity = FoodSeverity.Moderate, Reason = "Fruto desidratado com altíssima concentração de açúcar por porção." },
+                    new() { HealthConditionId = diabetes.Id, FoodId = foods["Mel"].Id, Severity = FoodSeverity.Moderate, Reason = "Açúcar simples de absorção imediata, causa picos acentuados de glicose." },
 
                     // =========================
                     // Hiperuricemia
                     // =========================
 
-                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Vaca"].Id, Severity = FoodSeverity.Avoid },
-                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Porco"].Id, Severity = FoodSeverity.Avoid },
-                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Borrego"].Id, Severity = FoodSeverity.Avoid },
-                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Pato"].Id, Severity = FoodSeverity.Avoid },
-                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Sardinha"].Id, Severity = FoodSeverity.Avoid },
-                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Cavala"].Id, Severity = FoodSeverity.Avoid },
-                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Camarão"].Id, Severity = FoodSeverity.Avoid },
-                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Mexilhão"].Id, Severity = FoodSeverity.Avoid },
-                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Polvo"].Id, Severity = FoodSeverity.Avoid },
-                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Frango"].Id, Severity = FoodSeverity.Moderate },
-                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Peru"].Id, Severity = FoodSeverity.Moderate },
-                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Atum"].Id, Severity = FoodSeverity.Moderate },
-                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Bacalhau"].Id, Severity = FoodSeverity.Moderate },
+                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Vaca"].Id, Severity = FoodSeverity.Avoid, Reason = "Rica em purinas, cuja degradação aumenta os níveis de ácido úrico." },
+                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Porco"].Id, Severity = FoodSeverity.Avoid, Reason = "Carne rica em purinas que agrava o quadro de hiperuricemia." },
+                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Borrego"].Id, Severity = FoodSeverity.Avoid, Reason = "Teor elevado de purinas prejudiciais para o ácido úrico." },
+                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Pato"].Id, Severity = FoodSeverity.Avoid, Reason = "Carne de aves gorda e rica em purinas." },
+                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Sardinha"].Id, Severity = FoodSeverity.Avoid, Reason = "Peixe azul com concentração muito elevada de purinas." },
+                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Cavala"].Id, Severity = FoodSeverity.Avoid, Reason = "Peixe gordo rico em purinas que favorece crises de ácido úrico." },
+                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Camarão"].Id, Severity = FoodSeverity.Avoid, Reason = "Marisco com alto teor de purinas." },
+                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Mexilhão"].Id, Severity = FoodSeverity.Avoid, Reason = "Molusco altamente desaconselhado devido ao excesso de purinas." },
+                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Polvo"].Id, Severity = FoodSeverity.Avoid, Reason = "Marisco e cefalópode com forte impacto nos níveis de ácido úrico." },
+                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Frango"].Id, Severity = FoodSeverity.Moderate, Reason = "Ave com menor teor de purinas que a carne vermelha, mas deve ser moderada." },
+                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Peru"].Id, Severity = FoodSeverity.Moderate, Reason = "Carne branca com teor moderado de purinas." },
+                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Atum"].Id, Severity = FoodSeverity.Moderate, Reason = "Peixe com teor moderado de purinas, tolerável em quantidades controladas." },
+                    new() { HealthConditionId = hiperuricemia.Id, FoodId = foods["Bacalhau"].Id, Severity = FoodSeverity.Moderate, Reason = "Pode conter teor moderado dependendo do processamento e salinização." },
 
                     // =========================
                     // HIPERTENSÃO
                     // =========================
 
-                    new() { HealthConditionId = hipertensao.Id, FoodId = foods["Bacalhau"].Id, Severity = FoodSeverity.Moderate },
-                    new() { HealthConditionId = hipertensao.Id, FoodId = foods["Azeitonas"].Id, Severity = FoodSeverity.Moderate },
-                    new() { HealthConditionId = hipertensao.Id, FoodId = foods["Queijo Curado"].Id, Severity = FoodSeverity.Moderate },
-                    new() { HealthConditionId = hipertensao.Id, FoodId = foods["Manteiga"].Id, Severity = FoodSeverity.Moderate },
+                    new() { HealthConditionId = hipertensao.Id, FoodId = foods["Bacalhau"].Id, Severity = FoodSeverity.Moderate, Reason = "Tradicionalmente dessecado com sal; o teor de sódio exige cuidado." },
+                    new() { HealthConditionId = hipertensao.Id, FoodId = foods["Azeitonas"].Id, Severity = FoodSeverity.Moderate, Reason = "Normalmente conservadas em salmoura, elevando o teor de sódio." },
+                    new() { HealthConditionId = hipertensao.Id, FoodId = hipertensao.Id == doencaCeliaca.Id ? 0 : foods["Queijo Curado"].Id, Severity = FoodSeverity.Moderate, Reason = "Produto lácteo curado com teores elevados de sal e gorduras saturadas." },
+                    new() { HealthConditionId = hipertensao.Id, FoodId = foods["Manteiga"].Id, Severity = FoodSeverity.Moderate, Reason = "Gordura saturada que deve ser consumida de forma restrita para proteger o sistema cardiovascular." },
 
 
                     // =========================
                     // Colesterol Alto
                     // =========================
 
-                    new() { HealthConditionId = colesterolAlto.Id, FoodId = foods["Vaca"].Id, Severity = FoodSeverity.Moderate },
-                    new() { HealthConditionId = colesterolAlto.Id, FoodId = foods["Porco"].Id, Severity = FoodSeverity.Moderate },
-                    new() { HealthConditionId = colesterolAlto.Id, FoodId = foods["Borrego"].Id, Severity = FoodSeverity.Moderate },
-                    new() { HealthConditionId = colesterolAlto.Id, FoodId = foods["Manteiga"].Id, Severity = FoodSeverity.Avoid },
-                    new() { HealthConditionId = colesterolAlto.Id, FoodId = foods["Queijo Curado"].Id, Severity = FoodSeverity.Moderate },
+                    new() { HealthConditionId = colesterolAlto.Id, FoodId = foods["Vaca"].Id, Severity = FoodSeverity.Moderate, Reason = "Contém gorduras saturadas que podem elevar o colesterol LDL." },
+                    new() { HealthConditionId = colesterolAlto.Id, FoodId = foods["Porco"].Id, Severity = FoodSeverity.Moderate, Reason = "Presença de gordura animal saturada a moderar." },
+                    new() { HealthConditionId = colesterolAlto.Id, FoodId = foods["Borrego"].Id, Severity = FoodSeverity.Moderate, Reason = "Teor significativo de gorduras saturadas." },
+                    new() { HealthConditionId = colesterolAlto.Id, FoodId = foods["Manteiga"].Id, Severity = FoodSeverity.Avoid, Reason = "Riquíssima em gorduras saturadas, impactando diretamente o colesterol LDL." },
+                    new() { HealthConditionId = colesterolAlto.Id, FoodId = foods["Queijo Curado"].Id, Severity = FoodSeverity.Moderate, Reason = "Lácteo gordo com elevado teor de gordura saturada." },
 
                     // =========================
                     // DOENÇA CELÍACA (Restrição de Glúten)
                     // =========================
 
-                    new() { HealthConditionId = doencaCeliaca.Id, FoodId = foods["Massa"].Id, Severity = FoodSeverity.Avoid },
-                    new() { HealthConditionId = doencaCeliaca.Id, FoodId = foods["Pão Branco"].Id, Severity = FoodSeverity.Avoid },
-                    new() { HealthConditionId = doencaCeliaca.Id, FoodId = foods["Pão Integral"].Id, Severity = FoodSeverity.Avoid },
-                    new() { HealthConditionId = doencaCeliaca.Id, FoodId = foods["Broa de Milho"].Id, Severity = FoodSeverity.Avoid },
-                    new() { HealthConditionId = doencaCeliaca.Id, FoodId = foods["Cuscuz"].Id, Severity = FoodSeverity.Avoid },
-                    new() { HealthConditionId = doencaCeliaca.Id, FoodId = foods["Seitan"].Id, Severity = FoodSeverity.Avoid },
-                    new() { HealthConditionId = doencaCeliaca.Id, FoodId = foods["Aveia"].Id, Severity = FoodSeverity.Moderate }
+                    new() { HealthConditionId = doencaCeliaca.Id, FoodId = foods["Massa"].Id, Severity = FoodSeverity.Avoid, Reason = "Geralmente fabricada com trigo, contendo glúten tóxico para celíacos." },
+                    new() { HealthConditionId = doencaCeliaca.Id, FoodId = foods["Pão Branco"].Id, Severity = FoodSeverity.Avoid, Reason = "Feito com farinha de trigo, fonte direta de glúten." },
+                    new() { HealthConditionId = doencaCeliaca.Id, FoodId = foods["Pão Integral"].Id, Severity = FoodSeverity.Avoid, Reason = "Contém farinhas com glúten (trigo, centeio ou cevada)." },
+                    new() { HealthConditionId = doencaCeliaca.Id, FoodId = foods["Broa de Milho"].Id, Severity = FoodSeverity.Avoid, Reason = "Frequentemente misturada com farinha de trigo na panificação tradicional." },
+                    new() { HealthConditionId = doencaCeliaca.Id, FoodId = foods["Cuscuz"].Id, Severity = FoodSeverity.Avoid, Reason = "Derivado direto do trigo." },
+                    new() { HealthConditionId = doencaCeliaca.Id, FoodId = foods["Seitan"].Id, Severity = FoodSeverity.Avoid, Reason = "Composto inteiramente por glúten de trigo." },
+                    new() { HealthConditionId = doencaCeliaca.Id, FoodId = foods["Aveia"].Id, Severity = FoodSeverity.Moderate, Reason = "Embora naturalmente isenta de glúten, sofre frequentemente de contaminação cruzada." }
 
                     // =========================
                     // Anemia

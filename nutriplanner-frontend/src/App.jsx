@@ -11,6 +11,7 @@ import FoodPage from "./pages/FoodPage";
 import HealthConditionFoodsPage from "./pages/HealthConditionFoodsPage";
 import HealthConditionsPage from "./pages/HealthConditionsPage";
 import ProfilePage from "./pages/ProfilePage";
+import WhatCanIEatPage from "./pages/WhatCanIEatPage";
 import "./App.css";
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
                 <Route path="/healthconditions" element={token ? <HealthConditionsPage token={token} /> : <Navigate to="/login" />} />
                 <Route path="/selections" element={token ? <UserSelectionPage token={token} /> : <Navigate to="/login" />} />
                 <Route path="/foods" element={token ? <FoodPage token={token} /> : <Navigate to="/login" />} />
+                <Route path="/me/safefoods" element={token ? <WhatCanIEatPage token={token} /> : <Navigate to="/login" />} />
                 <Route path="/profile" element={token ? <ProfilePage token={token} handleDietSelection={handleSetDietId} /> : <Navigate to="/login" />} />
             </Route>
         </Routes>

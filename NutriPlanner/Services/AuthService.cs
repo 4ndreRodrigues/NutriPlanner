@@ -15,8 +15,12 @@ namespace NutriPlanner.Services
         {
             var user = new ApplicationUser
             {
+
                 UserName = dto.Email,
-                Email = dto.Email
+                Email = dto.Email,
+                Name = dto.Name,
+                LastName = dto.LastName,
+                BirthDate = dto.BirthDate
             };
             var result = await _userManager.CreateAsync(user, dto.Password);
             return result;

@@ -12,7 +12,7 @@ namespace NutriPlanner.Controllers
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class UserHealthConditionController(IUserHealthConditionService _userHealthConditionsService) : ControllerBase
+    public class UserHealthConditionsController(IUserHealthConditionService _userHealthConditionsService) : ControllerBase
     {
         [HttpPost]
         public async Task<IActionResult> AddUserHealthCondition(AddUserHealthConditionDto dto)

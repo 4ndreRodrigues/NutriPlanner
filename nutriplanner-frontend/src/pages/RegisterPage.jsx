@@ -10,11 +10,11 @@ function RegisterPage() {
     const navigate = useNavigate();
 
 
-    function onRegister(email, password) {
+    function onRegister(email, password, name, lastName, birthDate ) {
         fetch(`${API_URL}/auth/register`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password }),
+            body: JSON.stringify({ email, password, name, lastName, birthDate }),
         })
         .then(res => res.json())
         .then(data => {
@@ -32,8 +32,7 @@ function RegisterPage() {
 
     return (
         <div className="container">
-            {error && <p className="food-error">{error}</p>}
-            <RegisterForm onRegister={onRegister} />
+            <RegisterForm onRegister={onRegister} error={error} />
         </div>
     );
 }

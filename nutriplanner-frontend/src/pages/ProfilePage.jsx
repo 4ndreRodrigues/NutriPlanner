@@ -64,8 +64,17 @@ function ProfilePage({ token, handleDietSelection }) {
     }
 
     function handleDietChange(newDietId) {
-        fetch(`${API_URL}/users/me/diet/${newDietId}`, {
-            method: "PUT",
+        if (newDietId === profile.dietId) {
+            return;
+        }
+        const endpoint = newDietId === null
+            ? `${API_URL}/users/me/diet`
+            : `${API_URL}/users/me/diet/${newDietId}`;
+
+        const method = newDietId === null ? "DELETE" : "PUT";
+   
+        fetch(endpoint, {
+            method: method,
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -90,21 +99,32 @@ function ProfilePage({ token, handleDietSelection }) {
 
     return (
         <div className="page-content">
-            <div className="profile-header">
-                {/* Cabeçalho do Utilizador Organizado */}
+            <div className="profile-card">
+                {/* Cabeçalho do Utilizador */}
                 <div className="profile-user-main">
                     <div className="profile-avatar">{profile.email[0].toUpperCase()}</div>
                     <div className="profile-user-info">
-                        <h4>{profile.email}</h4>
-                        
+                        <h3>{profile.name} {profile.lastName}</h3>
+                        <p className="profile-email">{profile.email}</p>
+                        <p className="profile-birthdate">
+                            📅 Nascido a {profile.birthDate ? new Date(profile.birthDate).toLocaleDateString() : "Não especificada"}
+                        </p>
                     </div>
                 </div>
 
-                {/* Secção de Seleção da Dieta */}
-                <div className="profile-conditions-container">
+                <div className="profile-divider"></div>
+
+                { }
+                <div className="profile-section">
                     <h2>Dieta atual</h2>
-                    <select value={profile.dietId || ""} onChange={(e) => handleDietChange(Number(e.target.value))}>
-                        <option value="" disabled>Selecione uma dieta...</option>
+                    <select
+                        value={profile.dietId || ""}
+                        onChange={(e) => {
+                            const val = e.target.value;
+                            handleDietChange(val === "" ? null : Number(val));
+                        }}
+                    >
+                        <option value="">--- Sem dieta ---</option>
                         {diets.map((diet) => (
                             <option key={diet.id} value={diet.id}>
                                 {diet.name}
@@ -113,8 +133,10 @@ function ProfilePage({ token, handleDietSelection }) {
                     </select>
                 </div>
 
+                <div className="profile-divider"></div>
+
                 {/* Secção de Condições */}
-                <div className="profile-conditions-container">
+                <div className="profile-section">
                     <h2>Condições de Saúde</h2>
                     {loadingHealthConditions ? (
                         <p>A carregar...</p>

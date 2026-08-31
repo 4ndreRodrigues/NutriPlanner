@@ -7,6 +7,18 @@ function UserSelectionCard({ userSelection, token, onSelectionRemoved }) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [showNutrition, setShowNutrition] = useState(false);
+    const severity = userSelection.severity?.toLowerCase() || 'safe';
+
+    let severityClass = '';
+    let badgeText = '';
+
+    if (severity === 'moderate') {
+        severityClass = 'food-card-moderate';
+        badgeText = 'Moderar';
+    } else if (severity === 'avoid') {
+        severityClass = 'food-card-avoid';
+        badgeText = 'A Evitar';
+    }
 
     function handleToggle() {
         // já está aberto -> só fecha
@@ -58,22 +70,27 @@ function UserSelectionCard({ userSelection, token, onSelectionRemoved }) {
     }
 
     return (
-        <li className="food-card">
+        <li className={`food-card ${severityClass}`}>
             <div className="food-card-header">
-                <span>{userSelection.foodName}</span>
-                <button className="btn-outline" onClick={handleToggle}>
-                    {showNutrition ? "Ocultar" : "Ver macros"}
-                </button>
-                <button className="btn-danger" onClick={handleDeselect}>
-                    Remover
-                </button>
+                <div className="food-card-identity">
+                    <span>{userSelection.foodName}</span>
+                    {badgeText && <span className={`badge-${severity}`}>{badgeText}</span>}
+                </div>
+                <div className="food-card-actions">
+                    <button className="btn-outline" onClick={handleToggle}>
+                        {showNutrition ? "Ocultar" : "Ver macros"}
+                    </button>
+                    <button className="btn-danger" onClick={handleDeselect}>
+                        Remover
+                    </button>
+                </div>
             </div>
 
             {loading && <p className="food-loading">A carregar...</p>}
             {error && <p className="food-error">{error}</p>}
 
             {showNutrition && nutrition && (
-                <ul className="nutrition-details">
+                <ul className="food-macros">
                     <li>Calorias: {nutrition.calories} kcal</li>
                     <li>Proteína: {nutrition.protein} g</li>
                     <li>Hidratos: {nutrition.carbs} g</li>

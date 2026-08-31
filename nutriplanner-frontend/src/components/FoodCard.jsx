@@ -15,6 +15,18 @@ function FoodCard({ food, token, isSelected, onSelectionAdded, onSelectionRemove
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [showNutrition, setShowNutrition] = useState(false);
+    const severity = food.severity?.toLowerCase() || 'safe';
+
+    let severityClass = '';
+    let badgeText = '';
+
+    if (severity === 'moderate') {
+        severityClass = 'food-card-moderate';
+        badgeText = 'Moderar';
+    } else if (severity === 'avoid') {
+        severityClass = 'food-card-avoid';
+        badgeText = 'A Evitar';
+    }
 
     function handleToggle() {
         // já está aberto -> só fecha
@@ -88,11 +100,12 @@ function FoodCard({ food, token, isSelected, onSelectionAdded, onSelectionRemove
     }
 
     return (
-        <li className="food-card">
+        <li className={`food-card ${severityClass}`}>
             <div className="food-card-header">
                 <div className="food-card-identity">
                     <span className="food-icon">{categoryIcons[food.category] || "🍽️"}</span>
                     <span>{food.name}</span>
+                    {badgeText && <span className={`badge-${severity}`}>{badgeText}</span>}
                 </div>
                 <div className="food-card-actions">
                     {!isSelected && (
@@ -110,6 +123,11 @@ function FoodCard({ food, token, isSelected, onSelectionAdded, onSelectionRemove
                     </button>
                 </div>
             </div>
+            {food.reason != null &&
+                <div className="food-reason-tooltip">
+                    {food.reason}
+                </div>
+            }
 
             {loading && <p className="food-loading">A carregar...</p>}
             {error && <p className="food-error">{error}</p>}

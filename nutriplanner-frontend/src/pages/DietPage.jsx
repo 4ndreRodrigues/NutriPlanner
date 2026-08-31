@@ -37,11 +37,17 @@ function DietPage({ token, handleDietSelection}) {
             {loadingDiets ? (
                 <p>A carregar...</p>
             ) : (
+                <div className="diet-selection-container">
                     <DietList
                         diets={diets}
                         token={token}
                         onSelectDiet={handleDietSelection}
                     />
+
+                    <div>
+                        <button className="btn-skip" onClick={() => navigate("/healthconditions")}>Saltar</button>
+                    </div>
+                </div>
             )}
 
         </div>
